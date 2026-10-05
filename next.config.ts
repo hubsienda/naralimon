@@ -1,7 +1,17 @@
 import type { NextConfig } from "next";
+import nextra from "nextra";
+
+const withNextra = nextra({
+  search: false,
+});
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  turbopack: {
+    resolveAlias: {
+      "next-mdx-import-source-file": "./mdx-components.tsx",
+    },
+  },
   async redirects() {
     return [
       {
@@ -13,4 +23,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+export default withNextra(nextConfig);

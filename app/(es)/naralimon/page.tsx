@@ -1,4 +1,6 @@
+import InstagramIcon from "@/components/InstagramIcon";
 import SimplePage from "@/components/SimplePage";
+import { siteConfig } from "@/lib/config";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata({
@@ -16,6 +18,7 @@ export default function NaralimonPage() {
       <p className="statement-line">todo puede ser un juego.</p>
       <p>Creamos juegos, objetos e ideas que convierten lo cotidiano en algo más divertido.</p>
       <p>Y esto acaba de empezar.</p>
+      <a className="button button-dark instagram-cta" href={siteConfig.socials.instagram} target="_blank" rel="noopener noreferrer"><InstagramIcon /> SIGUE A NARALIMON</a>
     </SimplePage>
   );
 }

@@ -1,8 +1,15 @@
+import LegalContent from "@/components/LegalContent";
 import SimplePage from "@/components/SimplePage";
 import { pageMetadata } from "@/lib/metadata";
 
-export const metadata = pageMetadata({ locale: "es", title: "Aviso legal | Naralimon", description: "Aviso legal de Naralimon.", path: "/aviso-legal", alternatePath: "/en/legal" });
+export const metadata = pageMetadata({
+  locale: "es",
+  title: "Aviso legal | Naralimon",
+  description: "Aviso legal y condiciones generales de uso de naralimon.com.",
+  path: "/aviso-legal",
+  alternatePath: "/en/legal",
+});
 
 export default function LegalPage() {
-  return <SimplePage title="AVISO LEGAL"><p>La estructura de esta página está preparada para incorporar los datos legales definitivos del titular del sitio antes del lanzamiento público.</p><p>No se han añadido nombres societarios, domicilios, números fiscales ni otros datos que no hayan sido suministrados para este proyecto.</p></SimplePage>;
+  return <SimplePage eyebrow="NARALIMON" title="AVISO LEGAL"><LegalContent locale="es" kind="legal" /></SimplePage>;
 }
