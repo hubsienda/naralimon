@@ -2,11 +2,13 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { storyTranslationMap } from "@/lib/content/translations.generated";
 import type { Locale } from "@/lib/types";
 
 const esToEn: Record<string, string> = {
   "/": "/en",
   "/klans": "/en/klans",
+  "/historias": "/en/stories",
   "/naralimon": "/en/naralimon",
   "/contacto": "/en/contact",
   "/privacidad": "/en/privacy",
@@ -18,8 +20,9 @@ const enToEs = Object.fromEntries(Object.entries(esToEn).map(([es, en]) => [en, 
 
 export default function LanguageSwitcher({ locale }: { locale: Locale }) {
   const pathname = usePathname();
-  const esHref = locale === "es" ? pathname : (enToEs[pathname] ?? "/");
-  const enHref = locale === "en" ? pathname : (esToEn[pathname] ?? "/en");
+  const pairedStory = storyTranslationMap[pathname];
+  const esHref = locale === "es" ? pathname : (pairedStory ?? enToEs[pathname] ?? "/");
+  const enHref = locale === "en" ? pathname : (pairedStory ?? esToEn[pathname] ?? "/en");
 
   return (
     <div className="language-switch" aria-label={locale === "es" ? "Idioma" : "Language"}>
