@@ -130,6 +130,7 @@ export default function CookieConsent({ locale }: { locale: Locale }) {
     const value: ConsentPreferences = { ...next, updatedAt: new Date().toISOString() };
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(value));
     setConsent(value);
+    window.dispatchEvent(new CustomEvent("naralimon:consent-changed", { detail: value }));
   };
 
   const acceptAll = () => persist({ analytics: true, marketing: true });
