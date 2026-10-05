@@ -20,7 +20,7 @@ export default function Header({ locale }: { locale: Locale }) {
   ];
 
   return (
-    <header className="site-header">
+    <header className="site-header naralimon-dark-header">
       <div className="shell header-inner">
         <Link href={home} className="brand" aria-label="Naralimon">
           <span className="brand-image">
@@ -41,6 +41,58 @@ export default function Header({ locale }: { locale: Locale }) {
           <LanguageSwitcher locale={locale} />
         </nav>
       </div>
+      <style jsx global>{`
+        .naralimon-dark-header {
+          background: rgba(37, 37, 37, 0.97);
+          color: #ffffff;
+          border-bottom-color: rgba(255, 255, 255, 0.12);
+          backdrop-filter: blur(14px);
+        }
+
+        .naralimon-dark-header .desktop-nav > a,
+        .naralimon-dark-header .mobile-nav > a,
+        .naralimon-dark-header .language-switch a {
+          color: #ffffff;
+          transition: color .18s ease;
+        }
+
+        .naralimon-dark-header .desktop-nav > a:hover,
+        .naralimon-dark-header .mobile-nav > a:hover,
+        .naralimon-dark-header .language-switch a:hover {
+          color: var(--lemon);
+        }
+
+        .naralimon-dark-header .desktop-nav > a::after {
+          background: var(--orange);
+        }
+
+        .naralimon-dark-header .language-switch a[aria-current="page"] {
+          background: var(--lemon);
+          color: var(--ink);
+        }
+
+        .naralimon-dark-header .menu-button {
+          border-color: rgba(255, 255, 255, 0.82);
+          background: #303030;
+        }
+
+        .naralimon-dark-header .menu-button span {
+          background: #ffffff;
+        }
+
+        .naralimon-dark-header .mobile-panel {
+          background: #252525;
+          color: #ffffff;
+          border-top-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .naralimon-dark-header .desktop-nav > a:focus-visible,
+        .naralimon-dark-header .mobile-nav > a:focus-visible,
+        .naralimon-dark-header .language-switch a:focus-visible,
+        .naralimon-dark-header .menu-button:focus-visible {
+          outline-color: var(--orange);
+        }
+      `}</style>
     </header>
   );
 }

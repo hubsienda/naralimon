@@ -3,6 +3,7 @@ import Link from "next/link";
 import { siteConfig } from "@/lib/config";
 import { getCopy } from "@/lib/i18n";
 import type { Locale } from "@/lib/types";
+import BackToTopButton from "./BackToTopButton";
 import CookieSettingsButton from "./CookieSettingsButton";
 import InstagramIcon from "./InstagramIcon";
 
@@ -23,6 +24,7 @@ export default function Footer({ locale }: { locale: Locale }) {
           <div className="footer-social">
             <a href={siteConfig.socials.instagram} target="_blank" rel="noopener noreferrer"><InstagramIcon /> Instagram</a>
             <CookieSettingsButton label={c.manageCookies} />
+            <BackToTopButton locale={locale} />
           </div>
           <div className="footer-links">{legal.map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}</div>
         </div>
