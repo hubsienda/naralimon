@@ -1,17 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { AnchorHTMLAttributes, ComponentProps, ComponentPropsWithoutRef, ReactNode } from "react";
+import type { ComponentProps, ComponentPropsWithoutRef, ReactNode } from "react";
 import type { MDXRemote } from "nextra/mdx-remote";
 
 type NextraMDXComponents = NonNullable<ComponentProps<typeof MDXRemote>["components"]>;
-
-function MdxLink({ href = "#", children, ...props }: AnchorHTMLAttributes<HTMLAnchorElement>) {
-  const external = href.startsWith("http://") || href.startsWith("https://");
-  if (external) {
-    return <a href={href} target="_blank" rel="noopener noreferrer" {...props}>{children}</a>;
-  }
-  return <Link href={href} {...props}>{children}</Link>;
-}
 
 function Challenge({ children }: { children: ReactNode }) {
   return <aside className="mdx-challenge"><span aria-hidden="true">?</span><div>{children}</div></aside>;
@@ -42,7 +34,6 @@ export function useMDXComponents(components: NextraMDXComponents = {}): NextraMD
     h2: (props: ComponentPropsWithoutRef<"h2">) => <h2 className="story-h2" {...props} />,
     h3: (props: ComponentPropsWithoutRef<"h3">) => <h3 className="story-h3" {...props} />,
     p: (props: ComponentPropsWithoutRef<"p">) => <p className="story-paragraph" {...props} />,
-    a: MdxLink,
     Challenge,
     Quote,
     Image: StoryImage,
