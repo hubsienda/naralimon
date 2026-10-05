@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { siteConfig } from "@/lib/config";
 import { getCopy } from "@/lib/i18n";
 import type { Locale } from "@/lib/types";
 
@@ -15,7 +16,7 @@ export default function Hero({ locale }: { locale: Locale }) {
           <p className="hero-body">{c.body}</p>
           <div className="hero-actions">
             <a href="#play" className="button button-dark">{c.primary}</a>
-            <a href="#follow" className="button button-light">{c.secondary}</a>
+            <a href={siteConfig.socials.instagram} target="_blank" rel="noopener noreferrer" className="button button-light">{c.secondary}</a>
           </div>
         </div>
         <div className="hero-art" aria-label={c.spark}>
