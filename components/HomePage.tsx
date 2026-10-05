@@ -6,6 +6,7 @@ import Hero from "./Hero";
 import KlansTeaser from "./KlansTeaser";
 import RandomChallenge from "./RandomChallenge";
 import SocialFollow from "./SocialFollow";
+import StoriesTeaser from "./StoriesTeaser";
 
 export default function HomePage({ locale }: { locale: Locale }) {
   return (
@@ -15,6 +16,7 @@ export default function HomePage({ locale }: { locale: Locale }) {
       <KlansTeaser locale={locale} />
       <ComingSoon locale={locale} />
       <ChoiceGame locale={locale} />
+      <StoriesTeaser locale={locale} />
       <SocialFollow locale={locale} />
       <AboutShort locale={locale} />
     </main>
