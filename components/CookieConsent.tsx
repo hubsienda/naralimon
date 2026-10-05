@@ -28,7 +28,10 @@ function readConsent(): ConsentPreferences | null {
 }
 
 function disableAnalyticsCookies() {
-  const names = document.cookie.split(";").map((part) => part.split("=")[0]?.trim()).filter(Boolean);
+  const names = document.cookie
+    .split(";")
+    .map((part) => part.split("=")[0]?.trim())
+    .filter((name): name is string => Boolean(name));
   const hostname = window.location.hostname.replace(/^www\./, "");
   for (const name of names) {
     if (!name.startsWith("_ga")) continue;
@@ -86,6 +89,11 @@ export default function CookieConsent({ locale }: { locale: Locale }) {
     setConsent(readConsent());
   }, []);
 
+  const closePreferences = () => {
+    setPreferencesOpen(false);
+    window.setTimeout(() => previousFocus.current?.focus(), 0);
+  };
+
   useEffect(() => {
     const open = () => {
       const current = readConsent();
@@ -132,10 +140,6 @@ export default function CookieConsent({ locale }: { locale: Locale }) {
     setAnalytics(current?.analytics ?? false);
     setMarketing(current?.marketing ?? false);
     setPreferencesOpen(true);
-  };
-  const closePreferences = () => {
-    setPreferencesOpen(false);
-    window.setTimeout(() => previousFocus.current?.focus(), 0);
   };
   const savePreferences = () => {
     persist({ analytics, marketing });
