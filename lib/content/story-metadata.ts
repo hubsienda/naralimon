@@ -13,6 +13,7 @@ export function storyMetadata(story: Story, translation?: Story): Metadata {
   const enStory = story.locale === "en" ? story : translation;
   const esUrl = esStory ? `${siteConfig.baseUrl}${storyPath(esStory)}` : undefined;
   const enUrl = enStory ? `${siteConfig.baseUrl}${storyPath(enStory)}` : undefined;
+  const imageUrl = story.image ? absoluteUrl(story.image) : `${siteConfig.baseUrl}/opengraph-image`;
 
   return {
     title: `${story.title} | Naralimon`,
@@ -32,7 +33,7 @@ export function storyMetadata(story: Story, translation?: Story): Metadata {
       title: story.title,
       description: story.description,
       publishedTime: `${story.date}T12:00:00.000Z`,
-      ...(story.image ? { images: [{ url: absoluteUrl(story.image), alt: story.title }] } : {}),
+      images: [{ url: imageUrl, alt: story.image ? story.title : "Naralimon — Everything can be a game" }],
     },
   };
 }
