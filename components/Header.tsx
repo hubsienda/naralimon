@@ -14,6 +14,7 @@ export default function Header({ locale }: { locale: Locale }) {
   const links = [
     [c.home, home],
     [c.klans, locale === "es" ? "/klans" : "/en/klans"],
+    [c.stories, locale === "es" ? "/historias" : "/en/stories"],
     [c.naralimon, locale === "es" ? "/naralimon" : "/en/naralimon"],
     [c.contact, locale === "es" ? "/contacto" : "/en/contact"],
   ];
