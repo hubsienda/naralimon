@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { AnchorHTMLAttributes, ComponentPropsWithoutRef, ReactNode } from "react";
+import type { MDXComponents } from "mdx/types";
 
 function MdxLink({ href = "#", children, ...props }: AnchorHTMLAttributes<HTMLAnchorElement>) {
   const external = href.startsWith("http://") || href.startsWith("https://");
@@ -34,7 +35,7 @@ function StoryImage({ src, alt, caption }: { src: string; alt: string; caption?:
   );
 }
 
-export function useMDXComponents(components: Record<string, unknown> = {}) {
+export function useMDXComponents(components: MDXComponents = {}): MDXComponents {
   return {
     h2: (props: ComponentPropsWithoutRef<"h2">) => <h2 className="story-h2" {...props} />,
     h3: (props: ComponentPropsWithoutRef<"h3">) => <h3 className="story-h3" {...props} />,
