@@ -3,7 +3,7 @@ import { siteConfig } from "./config";
 import type { Locale } from "./types";
 
 const localeTag = { es: "es_ES", en: "en_GB" } as const;
-const fallbackImage = { url: "/opengraph-image", width: 1200, height: 630, alt: "Naralimon — Everything can be a game" };
+const fallbackImage = { url: `${siteConfig.baseUrl}/opengraph-image`, width: 1200, height: 630, alt: "Naralimon — Everything can be a game" };
 
 export function pageMetadata({
   locale,
