@@ -1,0 +1,77 @@
+import Link from "next/link";
+import { siteConfig } from "@/lib/config";
+import type { Locale } from "@/lib/types";
+
+type LegalKind = "privacy" | "cookies" | "legal";
+
+function valueOrPending(value: string, locale: Locale) {
+  return value || (locale === "es" ? "Pendiente de completar antes del lanzamiento del dominio." : "To be completed before the domain launch.");
+}
+
+function OwnerDetails({ locale }: { locale: Locale }) {
+  const legal = siteConfig.legal;
+  return (
+    <dl className="legal-details">
+      <div><dt>{locale === "es" ? "Titular" : "Owner"}</dt><dd>{valueOrPending(legal.ownerName, locale)}</dd></div>
+      <div><dt>{locale === "es" ? "Datos societarios" : "Company details"}</dt><dd>{valueOrPending(legal.companyDetails, locale)}</dd></div>
+      <div><dt>{locale === "es" ? "Dirección" : "Address"}</dt><dd>{valueOrPending(legal.postalAddress, locale)}</dd></div>
+      <div><dt>Email</dt><dd>{legal.contactEmail ? <a href={`mailto:${legal.contactEmail}`}>{legal.contactEmail}</a> : valueOrPending("", locale)}</dd></div>
+    </dl>
+  );
+}
+
+function PrivacyContent({ locale }: { locale: Locale }) {
+  const es = locale === "es";
+  return (
+    <>
+      <p className="legal-intro">{es ? "Esta política explica qué datos puede tratar Naralimon a través de este sitio, para qué se utilizan y qué opciones tienes." : "This policy explains what data Naralimon may process through this site, what it is used for and what choices you have."}</p>
+      <section><h2>{es ? "1. Responsable y contacto" : "1. Controller and contact"}</h2><OwnerDetails locale={locale} /></section>
+      <section><h2>{es ? "2. Datos que puede recoger el sitio" : "2. Data the site may collect"}</h2><p>{es ? "El sitio puede tratar los datos que facilites voluntariamente al contactar (nombre, email y mensaje), el email y consentimiento asociados a una futura suscripción, y datos de uso agregados si aceptas Analítica y Google Analytics está configurado." : "The site may process data you voluntarily provide when contacting us (name, email and message), the email and consent associated with a future subscription, and aggregated usage data if you accept Analytics and Google Analytics is configured."}</p></section>
+      <section><h2>{es ? "3. Formulario de contacto" : "3. Contact form"}</h2><p>{es ? "El formulario actual utiliza un enlace de correo cuando el email de contacto está configurado. Naralimon no mantiene una base de datos propia de mensajes: tu aplicación/proveedor de correo envía la consulta al destinatario configurado." : "The current form uses an email link when the contact address is configured. Naralimon does not maintain its own message database: your email application/provider sends the enquiry to the configured recipient."}</p></section>
+      <section><h2>{es ? "4. Lista de correo" : "4. Mailing list"}</h2><p>{es ? "La zona de suscripción está preparada para Mailrelay. No se crea una base de datos propia de newsletters. La suscripción requiere una acción y consentimiento explícitos y, cuando se active Mailrelay, su formulario/proceso gestionará el alta." : "The signup area is prepared for Mailrelay. No proprietary newsletter database is created. Subscription requires an explicit action and consent and, once Mailrelay is activated, its form/process will handle registration."}</p></section>
+      <section><h2>{es ? "5. Analítica" : "5. Analytics"}</h2><p>{siteConfig.gaId ? (es ? "Google Analytics está configurado, pero su script no se carga hasta que aceptas la categoría Analítica. Puedes retirar ese consentimiento en cualquier momento desde GESTIONAR COOKIES." : "Google Analytics is configured, but its script does not load until you accept the Analytics category. You can withdraw that consent at any time through MANAGE COOKIES.") : (es ? "La integración con Google Analytics está preparada pero no hay un ID de medición configurado actualmente. Aunque aceptes Analítica, no se cargará Google Analytics hasta que exista ese ID." : "Google Analytics integration is prepared but no measurement ID is currently configured. Even if you accept Analytics, Google Analytics will not load until an ID is configured.")}</p></section>
+      <section><h2>{es ? "6. Finalidades y bases jurídicas" : "6. Purposes and legal bases"}</h2><p>{es ? "Los datos de contacto se utilizan para responder a tu solicitud; los datos de newsletter, para enviarte comunicaciones cuando hayas consentido; y la analítica, únicamente cuando hayas dado consentimiento. Según la naturaleza de una consulta, su tratamiento también puede ser necesario para atender medidas solicitadas por ti antes de una posible relación." : "Contact data is used to answer your request; newsletter data, to send communications where you have consented; and analytics, only where you have given consent. Depending on the nature of an enquiry, processing may also be necessary to take steps you request before a possible relationship."}</p></section>
+      <section><h2>{es ? "7. Conservación" : "7. Retention"}</h2><p>{es ? "Las consultas se conservan solo durante el tiempo necesario para gestionarlas y cumplir obligaciones aplicables. Una suscripción se mantiene hasta la baja o retirada del consentimiento. Los periodos de Analytics dependen de la configuración de la propiedad de Google Analytics." : "Enquiries are kept only for as long as needed to handle them and meet applicable obligations. A subscription remains active until unsubscribe or consent withdrawal. Analytics retention periods depend on the Google Analytics property settings."}</p></section>
+      <section><h2>{es ? "8. Proveedores y transferencias" : "8. Providers and transfers"}</h2><p>{es ? "Cuando se activen servicios como Mailrelay o Google Analytics, podrán actuar como proveedores del tratamiento. Si un proveedor implica una transferencia internacional, se aplicarán las garantías exigidas por la normativa aplicable y se actualizará esta política cuando corresponda." : "When services such as Mailrelay or Google Analytics are activated, they may act as processing providers. Where a provider involves an international transfer, safeguards required by applicable law will be used and this policy will be updated where appropriate."}</p></section>
+      <section><h2>{es ? "9. Tus derechos" : "9. Your rights"}</h2><p>{es ? "Puedes solicitar acceso, rectificación, supresión, oposición, limitación y, cuando corresponda, portabilidad; también puedes retirar un consentimiento sin afectar a tratamientos anteriores. Utiliza el contacto del responsable indicado arriba." : "You may request access, rectification, erasure, objection, restriction and, where applicable, portability; you may also withdraw consent without affecting earlier processing. Use the controller contact shown above."}</p></section>
+      <section><h2>{es ? "10. Reclamaciones" : "10. Complaints"}</h2><p>{siteConfig.legal.supervisoryAuthority || (es ? "Puedes presentar una reclamación ante la autoridad de protección de datos competente para el responsable del tratamiento." : "You may lodge a complaint with the data-protection supervisory authority competent for the controller.")}</p></section>
+      <section><h2>{es ? "11. Cambios" : "11. Updates"}</h2><p>{es ? "Esta política se actualizará si cambian los servicios, finalidades o datos legales del sitio." : "This policy will be updated if the site's services, purposes or legal details change."}</p></section>
+    </>
+  );
+}
+
+function CookieContent({ locale }: { locale: Locale }) {
+  const es = locale === "es";
+  return (
+    <>
+      <p className="legal-intro">{es ? "Naralimon no carga analítica ni rastreadores no esenciales antes de que elijas. Tu decisión se guarda localmente para no preguntarte en cada visita." : "Naralimon does not load analytics or non-essential trackers before you choose. Your decision is stored locally so we do not ask on every visit."}</p>
+      <section><h2>{es ? "1. Qué son las cookies" : "1. What cookies are"}</h2><p>{es ? "Las cookies son pequeños archivos que un sitio o un servicio puede guardar en el navegador. Este sitio también utiliza almacenamiento local del navegador para recordar tus preferencias de consentimiento." : "Cookies are small files a site or service may store in your browser. This site also uses browser local storage to remember your consent preferences."}</p></section>
+      <section><h2>{es ? "2. Almacenamiento necesario" : "2. Necessary storage"}</h2><div className="cookie-table-wrap"><table className="cookie-table"><thead><tr><th>{es ? "Nombre" : "Name"}</th><th>{es ? "Tipo" : "Type"}</th><th>{es ? "Finalidad" : "Purpose"}</th><th>{es ? "Duración" : "Duration"}</th></tr></thead><tbody><tr><td><code>naralimon-consent-v1</code></td><td>localStorage</td><td>{es ? "Recordar las categorías que has aceptado o rechazado." : "Remember the categories you accepted or rejected."}</td><td>{es ? "Hasta que cambies las preferencias o borres el almacenamiento del navegador." : "Until you change preferences or clear browser storage."}</td></tr></tbody></table></div></section>
+      <section><h2>{es ? "3. Google Analytics" : "3. Google Analytics"}</h2>{siteConfig.gaId ? <><p>{es ? "Solo se carga después de aceptar Analítica. GA4 puede establecer cookies propias para distinguir usuarios y mantener el estado de la sesión." : "It loads only after you accept Analytics. GA4 may set first-party cookies to distinguish users and maintain session state."}</p><div className="cookie-table-wrap"><table className="cookie-table"><thead><tr><th>{es ? "Cookie" : "Cookie"}</th><th>{es ? "Finalidad" : "Purpose"}</th><th>{es ? "Duración predeterminada" : "Default duration"}</th></tr></thead><tbody><tr><td><code>_ga</code></td><td>{es ? "Distinguir usuarios." : "Distinguish users."}</td><td>{es ? "Hasta 2 años, sujeto a configuración y límites del navegador." : "Up to 2 years, subject to configuration and browser limits."}</td></tr><tr><td><code>_ga_&lt;container-id&gt;</code></td><td>{es ? "Mantener el estado de la sesión." : "Maintain session state."}</td><td>{es ? "Hasta 2 años, sujeto a configuración y límites del navegador." : "Up to 2 years, subject to configuration and browser limits."}</td></tr></tbody></table></div></> : <p>{es ? "La integración está preparada, pero actualmente no hay un ID de medición configurado, por lo que Google Analytics no se carga." : "The integration is prepared, but no measurement ID is currently configured, so Google Analytics does not load."}</p>}</section>
+      <section><h2>{es ? "4. Marketing y terceros" : "4. Marketing and third parties"}</h2><p>{es ? "Actualmente Naralimon no carga Meta Pixel, publicidad ni otros rastreadores de marketing. La categoría existe en preferencias para poder incorporar un servicio futuro sin mezclarlo con Analítica." : "Naralimon currently loads no Meta Pixel, advertising or other marketing trackers. The category exists in preferences so a future service can be added without mixing it with Analytics."}</p></section>
+      <section><h2>{es ? "5. Gestionar o retirar el consentimiento" : "5. Manage or withdraw consent"}</h2><p>{es ? "Usa GESTIONAR COOKIES en el pie de cualquier página para reabrir las preferencias. Si retiras Analítica, el sitio desactiva Google Analytics y elimina las cookies _ga accesibles desde el dominio." : "Use MANAGE COOKIES in the footer of any page to reopen preferences. If you withdraw Analytics, the site disables Google Analytics and removes _ga cookies accessible from the domain."}</p></section>
+      <p><Link className="text-link" href={es ? "/privacidad" : "/en/privacy"}>{es ? "Ver política de privacidad" : "View privacy policy"} →</Link></p>
+    </>
+  );
+}
+
+function LegalNoticeContent({ locale }: { locale: Locale }) {
+  const es = locale === "es";
+  return (
+    <>
+      <p className="legal-intro">{es ? "Información general sobre el titular, el uso del sitio y los contenidos de Naralimon." : "General information about the site owner, use of the site and Naralimon content."}</p>
+      <section><h2>{es ? "1. Titular del sitio" : "1. Website owner"}</h2><OwnerDetails locale={locale} /></section>
+      <section><h2>{es ? "2. Propiedad intelectual" : "2. Intellectual property"}</h2><p>{es ? "Salvo indicación en contrario, la identidad Naralimon, sus textos, diseños, ilustraciones, juegos, materiales y demás contenidos del sitio están protegidos por los derechos que correspondan a sus respectivos titulares. El acceso al sitio no transfiere derechos de propiedad intelectual o industrial." : "Unless stated otherwise, the Naralimon identity, texts, designs, illustrations, games, materials and other site content are protected by the rights belonging to their respective owners. Access to the site does not transfer intellectual or industrial property rights."}</p></section>
+      <section><h2>{es ? "3. Uso permitido" : "3. Permitted use"}</h2><p>{es ? "Puedes navegar, compartir enlaces y utilizar las funciones públicas para su finalidad prevista. No puedes atribuirte los contenidos, explotarlos comercialmente sin autorización, interferir con el sitio o utilizarlo de forma ilícita." : "You may browse, share links and use public features for their intended purpose. You may not claim ownership of content, exploit it commercially without permission, interfere with the site or use it unlawfully."}</p></section>
+      <section><h2>{es ? "4. Disponibilidad y responsabilidad" : "4. Availability and liability"}</h2><p>{es ? "Naralimon procura mantener el sitio disponible y correcto, pero no garantiza disponibilidad ininterrumpida ni que todo contenido permanezca sin cambios. Los juegos y retos del sitio son recreativos; deben utilizarse con sentido común y sin poner en riesgo a personas o bienes." : "Naralimon aims to keep the site available and accurate, but does not guarantee uninterrupted availability or that all content will remain unchanged. Site games and challenges are recreational; they should be used with common sense and without putting people or property at risk."}</p></section>
+      <section><h2>{es ? "5. Enlaces de terceros" : "5. Third-party links"}</h2><p>{es ? "El sitio puede enlazar a proyectos o plataformas externas, como KLANS, Instagram o proveedores de correo. Esos sitios tienen sus propias condiciones y políticas y Naralimon no controla su contenido o disponibilidad." : "The site may link to external projects or platforms such as KLANS, Instagram or mailing providers. Those sites have their own terms and policies and Naralimon does not control their content or availability."}</p></section>
+      <section><h2>{es ? "6. Ley y jurisdicción" : "6. Law and jurisdiction"}</h2><p>{es ? "Se aplicarán la legislación imperativa y las reglas de jurisdicción que correspondan al titular del sitio y a la relación concreta con el usuario. Los datos societarios definitivos deben completarse antes del lanzamiento del dominio para concretar este apartado cuando proceda." : "Mandatory law and jurisdiction rules applicable to the site owner and the particular relationship with the user will apply. Final company details must be completed before domain launch so this section can be made more specific where appropriate."}</p></section>
+    </>
+  );
+}
+
+export default function LegalContent({ locale, kind }: { locale: Locale; kind: LegalKind }) {
+  if (kind === "privacy") return <PrivacyContent locale={locale} />;
+  if (kind === "cookies") return <CookieContent locale={locale} />;
+  return <LegalNoticeContent locale={locale} />;
+}
