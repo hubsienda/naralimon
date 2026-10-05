@@ -6,6 +6,7 @@ import CookieConsent from "@/components/CookieConsent";
 import { siteConfig } from "@/lib/config";
 import "../globals.css";
 import "../extensions.css";
+import "../integrations.css";
 
 const baloo = Baloo_2({ subsets: ["latin"], variable: "--font-baloo", display: "swap" });
 const nunito = Nunito_Sans({ subsets: ["latin"], variable: "--font-sans", display: "swap" });
