@@ -1,7 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { AnchorHTMLAttributes, ComponentPropsWithoutRef, ReactNode } from "react";
-import type { MDXComponents } from "mdx/types";
+import type { AnchorHTMLAttributes, ComponentProps, ComponentPropsWithoutRef, ReactNode } from "react";
+import type { MDXRemote } from "nextra/mdx-remote";
+
+type NextraMDXComponents = NonNullable<ComponentProps<typeof MDXRemote>["components"]>;
 
 function MdxLink({ href = "#", children, ...props }: AnchorHTMLAttributes<HTMLAnchorElement>) {
   const external = href.startsWith("http://") || href.startsWith("https://");
@@ -35,7 +37,7 @@ function StoryImage({ src, alt, caption }: { src: string; alt: string; caption?:
   );
 }
 
-export function useMDXComponents(components: MDXComponents = {}): MDXComponents {
+export function useMDXComponents(components: NextraMDXComponents = {}): NextraMDXComponents {
   return {
     h2: (props: ComponentPropsWithoutRef<"h2">) => <h2 className="story-h2" {...props} />,
     h3: (props: ComponentPropsWithoutRef<"h3">) => <h3 className="story-h3" {...props} />,
