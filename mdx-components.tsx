@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { ComponentProps, ComponentPropsWithoutRef, ReactNode } from "react";
 import type { MDXRemote } from "nextra/mdx-remote";
 import SiteLink from "@/components/SiteLink";
@@ -31,7 +32,11 @@ export function useMDXComponents(components: NextraMDXComponents = {}): NextraMD
     h2: (props: ComponentPropsWithoutRef<"h2">) => <h2 className="story-h2" {...props} />,
     h3: (props: ComponentPropsWithoutRef<"h3">) => <h3 className="story-h3" {...props} />,
     p: (props: ComponentPropsWithoutRef<"p">) => <p className="story-paragraph" {...props} />,
-    a: ({ href = "", ...props }: ComponentPropsWithoutRef<"a">) => <SiteLink href={href} {...props} />,
+    a: ({ href = "", ...props }) => (
+      typeof href === "string"
+        ? <SiteLink href={href} {...props} />
+        : <Link href={href} {...props} />
+    ),
     Challenge,
     Quote,
     Image: StoryImage,
