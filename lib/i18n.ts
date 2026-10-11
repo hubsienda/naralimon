@@ -2,7 +2,7 @@ import type { Locale } from "./types";
 
 export const copy = {
   es: {
-    nav: { home: "INICIO", klans: "KLANS", stories: "HISTORIAS", naralimon: "NARALIMON", contact: "CONTACTO" },
+    nav: { home: "INICIO", klanz: "KLANZ", stories: "HISTORIAS", naralimon: "NARALIMON", contact: "CONTACTO" },
     hero: {
       eyebrow: "NACIDO EN LA COSTA DEL SOL",
       title: "TODO PUEDE SER UN JUEGO.",
@@ -19,12 +19,12 @@ export const copy = {
       again: "OTRA",
       reset: "YA ESTÁ",
     },
-    klans: {
+    klanz: {
       kicker: "UN JUEGO REAL DE NARALIMON",
-      title: "KLANS",
+      title: "KLANZ",
       body: "Estrategia. Facciones. Alianzas. Traición.",
       sub: "Un juego de cartas de Naralimon.",
-      cta: "DESCUBRE KLANS",
+      cta: "DESCUBRE KLANZ",
     },
     coming: {
       label: "PRÓXIMAMENTE",
@@ -84,7 +84,7 @@ export const copy = {
     footer: { privacy: "PRIVACIDAD", cookies: "COOKIES", legal: "AVISO LEGAL", manageCookies: "GESTIONAR COOKIES", line: "TODO PUEDE SER UN JUEGO." },
   },
   en: {
-    nav: { home: "HOME", klans: "KLANS", stories: "STORIES", naralimon: "NARALIMON", contact: "CONTACT" },
+    nav: { home: "HOME", klanz: "KLANZ", stories: "STORIES", naralimon: "NARALIMON", contact: "CONTACT" },
     hero: {
       eyebrow: "BORN ON THE COSTA DEL SOL",
       title: "EVERYTHING CAN BE A GAME.",
@@ -96,8 +96,8 @@ export const copy = {
     challenge: {
       kicker: "FIRST TEST", title: "DO NOT PRESS THIS BUTTON", body: "Seriously. You can keep scrolling. Nobody is making you do it.", button: "DO NOT PRESS", again: "AGAIN", reset: "THAT'S ENOUGH",
     },
-    klans: {
-      kicker: "A REAL NARALIMON GAME", title: "KLANS", body: "Strategy. Factions. Alliances. Betrayal.", sub: "A Naralimon card game.", cta: "DISCOVER KLANS",
+    klanz: {
+      kicker: "A REAL NARALIMON GAME", title: "KLANZ", body: "Strategy. Factions. Alliances. Betrayal.", sub: "A Naralimon card game.", cta: "DISCOVER KLANZ",
     },
     coming: {
       label: "COMING SOON", title: "EVERYTHING CAN BE A GAME",
