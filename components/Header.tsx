@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { siteConfig } from "@/lib/config";
 import { getCopy } from "@/lib/i18n";
 import type { Locale } from "@/lib/types";
 import LanguageSwitcher from "./LanguageSwitcher";
@@ -13,7 +14,7 @@ export default function Header({ locale }: { locale: Locale }) {
   const home = locale === "es" ? "/" : "/en";
   const links = [
     [c.home, home],
-    [c.klans, locale === "es" ? "/klans" : "/en/klans"],
+    [c.klanz, siteConfig.klanzUrl],
     [c.stories, locale === "es" ? "/historias" : "/en/stories"],
     [c.naralimon, locale === "es" ? "/naralimon" : "/en/naralimon"],
     [c.contact, locale === "es" ? "/contacto" : "/en/contact"],
