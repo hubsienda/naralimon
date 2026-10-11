@@ -1,20 +1,18 @@
-import Link from "next/link";
+import { siteConfig } from "@/lib/config";
 import { getCopy } from "@/lib/i18n";
 import type { Locale } from "@/lib/types";
 
-export default function KlansTeaser({ locale }: { locale: Locale }) {
-  const c = getCopy(locale).klans;
-  const href = locale === "es" ? "/klans" : "/en/klans";
-
+export default function KlanzTeaser({ locale }: { locale: Locale }) {
+  const c = getCopy(locale).klanz;
   return (
-    <section className="section-pad klans-section">
-      <div className="shell klans-grid">
-        <div className="klans-copy">
+    <section className="section-pad klanz-section">
+      <div className="shell klanz-grid">
+        <div className="klanz-copy">
           <p className="eyebrow eyebrow-light">{c.kicker}</p>
           <h2>{c.title}</h2>
-          <p className="klans-lead">{c.body}</p>
+          <p className="klanz-lead">{c.body}</p>
           <p>{c.sub}</p>
-          <Link href={href} className="button button-lemon">{c.cta}</Link>
+          <a href={siteConfig.klanzUrl} className="button button-lemon">{c.cta}</a>
         </div>
         <div className="card-stack" aria-hidden="true">
           <div className="game-card card-a"><span>◆</span></div>

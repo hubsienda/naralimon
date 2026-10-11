@@ -7,7 +7,6 @@ import type { Locale } from "@/lib/types";
 
 const esToEn: Record<string, string> = {
   "/": "/en",
-  "/klans": "/en/klans",
   "/historias": "/en/stories",
   "/naralimon": "/en/naralimon",
   "/contacto": "/en/contact",

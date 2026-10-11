@@ -1,6 +1,6 @@
 export const siteConfig = {
   baseUrl: "https://naralimon.com",
-  klansUrl: "https://klans.vercel.app/",
+  klanzUrl: "https://klanz.naralimon.com",
   contactEmail: "naralimongroup@naralimon.com",
   gaId: process.env.NEXT_PUBLIC_GA_ID ?? "",
   socials: {
