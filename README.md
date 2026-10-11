@@ -113,9 +113,9 @@ Marketing/third-party consent currently controls the Mailrelay hosted form. Anal
 
 The footer's **GESTIONAR COOKIES / MANAGE COOKIES** action reopens preferences at any time.
 
-## KLANS
+## KLANZ
 
-KLANS currently links to `https://klans.vercel.app/` through `lib/config.ts`. Change the single `klansUrl` value when `https://klans.naralimon.com` is ready.
+KLANZ currently links to `https://klanz.naralimon.com` through `lib/config.ts`. Change the single `klanzUrl` value when `https://klanz.naralimon.com` is ready.
 
 ## Launch note
 
