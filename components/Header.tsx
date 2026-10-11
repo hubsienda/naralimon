@@ -7,6 +7,7 @@ import { siteConfig } from "@/lib/config";
 import { getCopy } from "@/lib/i18n";
 import type { Locale } from "@/lib/types";
 import LanguageSwitcher from "./LanguageSwitcher";
+import SiteLink from "./SiteLink";
 
 export default function Header({ locale }: { locale: Locale }) {
   const [open, setOpen] = useState(false);
@@ -29,7 +30,7 @@ export default function Header({ locale }: { locale: Locale }) {
           </span>
         </Link>
         <nav className="desktop-nav" aria-label={locale === "es" ? "Navegación principal" : "Main navigation"}>
-          {links.map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}
+          {links.map(([label, href]) => <SiteLink key={href} href={href}>{label}</SiteLink>)}
           <LanguageSwitcher locale={locale} />
         </nav>
         <button type="button" className="menu-button" aria-expanded={open} aria-controls="mobile-menu" aria-label={locale === "es" ? "Abrir menú" : "Open menu"} onClick={() => setOpen((value) => !value)}>
@@ -38,7 +39,7 @@ export default function Header({ locale }: { locale: Locale }) {
       </div>
       <div id="mobile-menu" className={`mobile-panel ${open ? "is-open" : ""}`}>
         <nav className="shell mobile-nav" aria-label={locale === "es" ? "Navegación móvil" : "Mobile navigation"}>
-          {links.map(([label, href]) => <Link key={href} href={href} onClick={() => setOpen(false)}>{label}</Link>)}
+          {links.map(([label, href]) => <SiteLink key={href} href={href} onClick={() => setOpen(false)}>{label}</SiteLink>)}
           <LanguageSwitcher locale={locale} />
         </nav>
       </div>

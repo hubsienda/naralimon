@@ -6,6 +6,7 @@ import type { Locale } from "@/lib/types";
 import BackToTopButton from "./BackToTopButton";
 import CookieSettingsButton from "./CookieSettingsButton";
 import InstagramIcon from "./InstagramIcon";
+import SiteLink from "./SiteLink";
 
 export default function Footer({ locale }: { locale: Locale }) {
   const c = getCopy(locale).footer;
@@ -22,7 +23,7 @@ export default function Footer({ locale }: { locale: Locale }) {
         </div>
         <div className="footer-right">
           <div className="footer-social">
-            <a href={siteConfig.socials.instagram} target="_blank" rel="noopener noreferrer"><InstagramIcon /> Instagram</a>
+            <SiteLink href={siteConfig.socials.instagram}><InstagramIcon /> Instagram</SiteLink>
             <CookieSettingsButton label={c.manageCookies} />
             <BackToTopButton locale={locale} />
           </div>

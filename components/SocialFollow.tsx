@@ -3,6 +3,7 @@ import { getCopy } from "@/lib/i18n";
 import type { Locale } from "@/lib/types";
 import InstagramIcon from "./InstagramIcon";
 import NewsletterSignup from "./NewsletterSignup";
+import SiteLink from "./SiteLink";
 
 export default function SocialFollow({ locale }: { locale: Locale }) {
   const c = getCopy(locale).follow;
@@ -15,8 +16,8 @@ export default function SocialFollow({ locale }: { locale: Locale }) {
           <p className="follow-copy">{c.body}</p>
         </div>
         <div className="social-links">
-          <a href={siteConfig.socials.instagram} target="_blank" rel="noopener noreferrer"><InstagramIcon /> {c.instagram} ↗</a>
-          {siteConfig.socials.facebook ? <a href={siteConfig.socials.facebook} target="_blank" rel="noopener noreferrer">{c.facebook} ↗</a> : null}
+          <SiteLink href={siteConfig.socials.instagram}><InstagramIcon /> {c.instagram} ↗</SiteLink>
+          {siteConfig.socials.facebook ? <SiteLink href={siteConfig.socials.facebook}>{c.facebook} ↗</SiteLink> : null}
         </div>
         <NewsletterSignup locale={locale} />
       </div>
