@@ -5,7 +5,7 @@ const MAIN_APP_HOSTS = new Set(["naralimon.com", "www.naralimon.com"]);
 
 type SiteLinkProps = Omit<ComponentPropsWithoutRef<"a">, "href"> & {
   href: string;
-  children: ReactNode;
+  children?: ReactNode;
 };
 
 export function isExternalHref(href: string): boolean {
