@@ -86,11 +86,11 @@ h3 { font-size: clamp(1.45rem, 2.3vw, 2rem); }
 .forbidden-button:active { transform: translateY(11px); box-shadow: 0 2px 0 var(--ink); }
 .challenge-text { max-width: 650px; margin: 0; font-family: var(--font-baloo), ui-rounded, sans-serif; font-size: clamp(1.35rem, 3vw, 2.05rem); font-weight: 700; line-height: 1.25; }
 .challenge-actions { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 1.2rem; margin-top: 2rem; }
-.klans-section { overflow: hidden; background: var(--ink); color: white; }
-.klans-grid { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: clamp(3rem, 8vw, 8rem); }
+.klanz-section { overflow: hidden; background: var(--ink); color: white; }
+.klanz-grid { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: clamp(3rem, 8vw, 8rem); }
 .eyebrow-light { color: var(--lemon); }
-.klans-lead { margin: 1.25rem 0 .15rem; font-size: clamp(1.25rem, 2.1vw, 1.7rem); font-weight: 800; }
-.klans-copy .button { margin-top: 1.8rem; }
+.klanz-lead { margin: 1.25rem 0 .15rem; font-size: clamp(1.25rem, 2.1vw, 1.7rem); font-weight: 800; }
+.klanz-copy .button { margin-top: 1.8rem; }
 .card-stack { position: relative; min-height: 390px; }
 .game-card { position: absolute; left: 50%; top: 50%; width: 210px; aspect-ratio: 2 / 3; display: grid; place-items: center; border: 3px solid white; border-radius: 22px; box-shadow: 0 20px 45px rgba(0,0,0,.35); }
 .game-card span { font-size: 4rem; color: var(--ink); }
@@ -156,12 +156,12 @@ h3 { font-size: clamp(1.45rem, 2.3vw, 2rem); }
   .mobile-panel.is-open { max-height: 430px; border-top-width: 1px; }
   .mobile-nav { display: grid; padding: 1.2rem 0 1.5rem; gap: .9rem; font-family: var(--font-baloo), ui-rounded, sans-serif; font-weight: 800; }
   .mobile-nav > a { padding: .5rem 0; border-bottom: 1px solid var(--line); }
-  .hero-grid, .klans-grid, .coming-grid, .follow-top, .newsletter-card, .about-short-grid { grid-template-columns: 1fr; }
+  .hero-grid, .klanz-grid, .coming-grid, .follow-top, .newsletter-card, .about-short-grid { grid-template-columns: 1fr; }
   .hero-grid { min-height: auto; }
   .hero-art { min-height: 360px; }
   .logo-stage { width: min(86%, 430px); }
   .spark-card { right: 4%; bottom: 5%; }
-  .klans-grid { gap: 2rem; }
+  .klanz-grid { gap: 2rem; }
   .card-stack { min-height: 340px; }
   .game-card { width: 180px; }
   .coming-section { background: var(--soft); }
