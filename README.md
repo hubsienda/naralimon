@@ -115,7 +115,7 @@ The footer's **GESTIONAR COOKIES / MANAGE COOKIES** action reopens preferences a
 
 ## KLANZ
 
-KLANZ currently links to `https://klanz.naralimon.com` through `lib/config.ts`. Change the single `klanzUrl` value when `https://klanz.naralimon.com` is ready.
+KLANZ links to `https://klanz.naralimon.com` through the central `klanzUrl` value in `lib/config.ts`.
 
 ## Launch note
 
