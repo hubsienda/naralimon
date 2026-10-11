@@ -5,7 +5,6 @@ import { getPublishedStories, getStoryTranslation, storyPath } from "@/lib/conte
 export default function sitemap(): MetadataRoute.Sitemap {
   const pairs = [
     ["/", "/en"],
-    ["/klans", "/en/klans"],
     ["/historias", "/en/stories"],
     ["/naralimon", "/en/naralimon"],
     ["/contacto", "/en/contact"],
