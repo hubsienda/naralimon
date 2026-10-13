@@ -9,10 +9,15 @@ export const siteConfig = {
   },
   mailrelayEmbedUrl: "https://naralimon.ipzmarketing.com/f/YjqIO4P0LoY",
   legal: {
-    ownerName: process.env.NEXT_PUBLIC_LEGAL_OWNER_NAME ?? "",
-    companyDetails: process.env.NEXT_PUBLIC_LEGAL_COMPANY_DETAILS ?? "",
-    contactEmail: process.env.NEXT_PUBLIC_LEGAL_CONTACT_EMAIL ?? "naralimongroup@naralimon.com",
-    postalAddress: process.env.NEXT_PUBLIC_LEGAL_POSTAL_ADDRESS ?? "",
-    supervisoryAuthority: process.env.NEXT_PUBLIC_PRIVACY_AUTHORITY ?? "",
+    ownerName: "Naralimon S.C.",
+    taxId: "ES J01837269",
+    contactEmail: "naralimongroup@naralimon.com",
+    postalAddressLines: [
+      "Calle Tamarindos 7",
+      "Mijas Costa",
+      "29651 Málaga",
+      "España",
+    ],
+    supervisoryAuthority: "Agencia Española de Protección de Datos (AEPD)",
   },
 } as const;
