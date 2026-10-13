@@ -10,6 +10,7 @@ import SiteLink from "./SiteLink";
 
 export default function Footer({ locale }: { locale: Locale }) {
   const c = getCopy(locale).footer;
+  const currentYear = new Date().getFullYear();
   const legal = locale === "es"
     ? [[c.privacy, "/privacidad"], [c.cookies, "/cookies"], [c.legal, "/aviso-legal"]]
     : [[c.privacy, "/en/privacy"], [c.cookies, "/en/cookies"], [c.legal, "/en/legal"]];
@@ -19,7 +20,7 @@ export default function Footer({ locale }: { locale: Locale }) {
       <div className="shell footer-grid">
         <div>
           <span className="footer-logo"><Image src="/logo/logo.png" alt="Naralimon" fill sizes="160px" className="object-contain" /></span>
-          <p>{c.line}</p>
+          <p>© {currentYear} All rights reserved - Naralimon S.C. Calle Tamarindos 7 Mijas Costa 29651 (Málaga) España – CIF ES J01837269</p>
         </div>
         <div className="footer-right">
           <div className="footer-social">
