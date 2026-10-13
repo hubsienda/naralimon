@@ -305,17 +305,48 @@ function CookieContent({ locale }: { locale: Locale }) {
   );
 }
 
+function LegalNoticeOwnerDetails({ locale }: { locale: Locale }) {
+  return (
+    <dl className="legal-details">
+      <div><dt>{locale === "es" ? "Titular" : "Owner"}</dt><dd>Naralimon S.C.</dd></div>
+      <div><dt>{locale === "es" ? "CIF" : "Tax ID"}</dt><dd>ES J01837269</dd></div>
+      <div>
+        <dt>{locale === "es" ? "Dirección" : "Address"}</dt>
+        <dd>
+          <div>Calle Tamarindos 7</div>
+          <div>Mijas Costa</div>
+          <div>29651 (Málaga)</div>
+          <div>España</div>
+        </dd>
+      </div>
+      <div><dt>Email</dt><dd><a href="mailto:naralimongroup@naralimon.com">naralimongroup@naralimon.com</a></dd></div>
+    </dl>
+  );
+}
+
 function LegalNoticeContent({ locale }: { locale: Locale }) {
   const es = locale === "es";
   return (
     <>
       <p className="legal-intro">{es ? "Información general sobre el titular, el uso del sitio y los contenidos de Naralimon." : "General information about the site owner, use of the site and Naralimon content."}</p>
-      <section><h2>{es ? "1. Titular del sitio" : "1. Website owner"}</h2><OwnerDetails locale={locale} /></section>
+      <section><h2>{es ? "1. Titular del sitio" : "1. Website owner"}</h2><LegalNoticeOwnerDetails locale={locale} /></section>
       <section><h2>{es ? "2. Propiedad intelectual" : "2. Intellectual property"}</h2><p>{es ? "Salvo indicación en contrario, la identidad Naralimon, sus textos, diseños, ilustraciones, juegos, materiales y demás contenidos del sitio están protegidos por los derechos que correspondan a sus respectivos titulares. El acceso al sitio no transfiere derechos de propiedad intelectual o industrial." : "Unless stated otherwise, the Naralimon identity, texts, designs, illustrations, games, materials and other site content are protected by the rights belonging to their respective owners. Access to the site does not transfer intellectual or industrial property rights."}</p></section>
       <section><h2>{es ? "3. Uso permitido" : "3. Permitted use"}</h2><p>{es ? "Puedes navegar, compartir enlaces y utilizar las funciones públicas para su finalidad prevista. No puedes atribuirte los contenidos, explotarlos comercialmente sin autorización, interferir con el sitio o utilizarlo de forma ilícita." : "You may browse, share links and use public features for their intended purpose. You may not claim ownership of content, exploit it commercially without permission, interfere with the site or use it unlawfully."}</p></section>
       <section><h2>{es ? "4. Disponibilidad y responsabilidad" : "4. Availability and liability"}</h2><p>{es ? "Naralimon procura mantener el sitio disponible y correcto, pero no garantiza disponibilidad ininterrumpida ni que todo contenido permanezca sin cambios. Los juegos y retos del sitio son recreativos; deben utilizarse con sentido común y sin poner en riesgo a personas o bienes." : "Naralimon aims to keep the site available and accurate, but does not guarantee uninterrupted availability or that all content will remain unchanged. Site games and challenges are recreational; they should be used with common sense and without putting people or property at risk."}</p></section>
-      <section><h2>{es ? "5. Enlaces de terceros" : "5. Third-party links"}</h2><p>{es ? "El sitio puede enlazar o integrar proyectos y plataformas externas, como KLANZ, Instagram, Mailrelay o proveedores de correo. Esos servicios tienen sus propias condiciones y políticas y Naralimon no controla su contenido o disponibilidad." : "The site may link to or integrate external projects and platforms such as KLANZ, Instagram, Mailrelay or mail providers. Those services have their own terms and policies and Naralimon does not control their content or availability."}</p></section>
-      <section><h2>{es ? "6. Ley y jurisdicción" : "6. Law and jurisdiction"}</h2><p>{es ? "Se aplicarán la legislación imperativa y las reglas de jurisdicción que correspondan a Naralimon S.C. y a la relación concreta con la persona usuaria." : "Mandatory law and jurisdiction rules applicable to Naralimon S.C. and the particular relationship with the user will apply."}</p></section>
+      <section><h2>{es ? "5. Enlaces de terceros" : "5. Third-party links"}</h2><p>{es ? "El sitio puede enlazar o integrar proyectos y plataformas externas, como KLANZ, Instagram o proveedores de correo. Esos servicios tienen sus propias condiciones y políticas y Naralimon no controla su contenido o disponibilidad." : "The site may link to or integrate external projects and platforms such as KLANZ, Instagram or mail providers. Those services have their own terms and policies and Naralimon does not control their content or availability."}</p></section>
+      <section>
+        <h2>{es ? "6. Ley y jurisdicción" : "6. Governing law and jurisdiction"}</h2>
+        <p>
+          {es
+            ? "El presente sitio web y las relaciones derivadas de su utilización se regirán por la legislación española."
+            : "This website and any relationships arising from its use shall be governed by Spanish law."}
+        </p>
+        <p>
+          {es
+            ? "Para cualquier controversia que pudiera surgir en relación con el acceso, uso o contenidos de este sitio web, y salvo que la normativa imperativa aplicable disponga otra cosa, las partes se someten a los Juzgados y Tribunales de Málaga, España."
+            : "For any dispute arising in connection with access to, use of, or content on this website, and unless mandatory applicable law provides otherwise, the parties submit to the Courts of Málaga, Spain."}
+        </p>
+      </section>
     </>
   );
 }
