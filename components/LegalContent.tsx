@@ -15,7 +15,7 @@ function OwnerDetails({ locale }: { locale: Locale }) {
       <div><dt>{locale === "es" ? "CIF" : "Tax ID"}</dt><dd>{legal.taxId}</dd></div>
       <div>
         <dt>{locale === "es" ? "Dirección" : "Address"}</dt>
-        <dd>{legal.postalAddressLines.map((line) => <div key={line}>{line}</div>)}</dd>
+        <dd>{legal.postalAddressLines.map((line) => <div key={line}>{locale === "en" && line === "España" ? "Spain" : line}</div>)}</dd>
       </div>
       <div><dt>Email</dt><dd><a href={`mailto:${legal.contactEmail}`}>{legal.contactEmail}</a></dd></div>
     </dl>
