@@ -92,18 +92,13 @@ Environment variables used by the public site:
 ```text
 NEXT_PUBLIC_FACEBOOK_URL=
 NEXT_PUBLIC_GA_ID=
-NEXT_PUBLIC_LEGAL_OWNER_NAME=
-NEXT_PUBLIC_LEGAL_COMPANY_DETAILS=
-NEXT_PUBLIC_LEGAL_CONTACT_EMAIL=
-NEXT_PUBLIC_LEGAL_POSTAL_ADDRESS=
-NEXT_PUBLIC_PRIVACY_AUTHORITY=
 ```
 
 - Instagram is fixed centrally to `https://www.instagram.com/naralimonoficial`.
 - The contact address is fixed centrally to `naralimongroup@naralimon.com`.
 - `NEXT_PUBLIC_FACEBOOK_URL` is optional; no Facebook link is shown unless it is supplied.
 - `NEXT_PUBLIC_GA_ID` enables Google Analytics **only after Analytics consent**. With no ID, no GA script loads.
-- The legal variables fill owner/controller details centrally without inventing them.
+- Legal identity, address, tax ID, contact email and supervisory authority are fixed centrally in `lib/config.ts`.
 
 ## Consent
 
