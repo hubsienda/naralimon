@@ -76,7 +76,7 @@ export const copy = {
       analytics: "Analítica",
       analyticsHelp: "Permite Google Analytics para entender de forma agregada cómo se usa la web.",
       marketing: "Marketing / terceros",
-      marketingHelp: "Reservado para servicios de terceros que se incorporen en el futuro. Actualmente no carga ningún rastreador.",
+      marketingHelp: "Permite cargar servicios de terceros opcionales, como el formulario de suscripción de Mailrelay.",
       alwaysOn: "SIEMPRE ACTIVAS",
       save: "GUARDAR PREFERENCIAS",
       close: "CERRAR",
@@ -143,12 +143,12 @@ export const copy = {
       analytics: "Analytics",
       analyticsHelp: "Allows Google Analytics so we can understand, in aggregate, how the site is used.",
       marketing: "Marketing / third parties",
-      marketingHelp: "Reserved for third-party services that may be added later. It currently loads no tracker.",
+      marketingHelp: "Allows optional third-party services to load, such as the Mailrelay subscription form.",
       alwaysOn: "ALWAYS ON",
       save: "SAVE PREFERENCES",
       close: "CLOSE",
     },
-    footer: { privacy: "PRIVACY", cookies: "COOKIES", legal: "LEGAL", manageCookies: "MANAGE COOKIES", line: "EVERYTHING CAN BE A GAME." },
+    footer: { privacy: "PRIVACY", cookies: "COOKIES", legal: "LEGAL NOTICE", manageCookies: "MANAGE COOKIES", line: "EVERYTHING CAN BE A GAME." },
   },
 } satisfies Record<Locale, unknown>;
 
