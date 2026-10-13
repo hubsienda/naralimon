@@ -93,16 +93,11 @@ function PrivacyContent({ locale }: { locale: Locale }) {
       </section>
 
       <section>
-        <h2>{es ? "7. Newsletter y Mailrelay" : "7. Newsletter and Mailrelay"}</h2>
+        <h2>{es ? "7. Newsletter y comunicaciones" : "7. Newsletter and communications"}</h2>
         <p>
           {es
-            ? "La suscripción al newsletter se gestiona mediante el formulario alojado de Mailrelay / IPZ Marketing. El flujo es Naralimon → formulario de Mailrelay → Mailrelay → grupo «Naralimones». Los datos introducidos en ese formulario se tratan para gestionar la suscripción y enviar las comunicaciones solicitadas. Naralimon no mantiene en este sitio una base de datos de newsletter separada de la plataforma de Mailrelay."
-            : "Newsletter subscriptions are managed through the hosted form provided by Mailrelay / IPZ Marketing. The flow is Naralimon → Mailrelay form → Mailrelay → “Naralimones” group. Data entered in that form is processed to manage subscriptions and send requested communications. Naralimon does not maintain a separate newsletter database on this website outside the Mailrelay platform."}
-        </p>
-        <p>
-          {es
-            ? "Puedes darte de baja en cualquier momento mediante el mecanismo de cancelación incluido en las comunicaciones o escribiendo a naralimongroup@naralimon.com."
-            : "You may unsubscribe at any time using the unsubscribe mechanism included in communications or by writing to naralimongroup@naralimon.com."}
+            ? "Si el usuario se suscribe a comunicaciones de Naralimon, sus datos se utilizarán para gestionar dicha suscripción y enviar las comunicaciones solicitadas. El usuario podrá darse de baja en cualquier momento mediante el mecanismo de cancelación incluido en las comunicaciones o escribiendo a naralimongroup@naralimon.com."
+            : "If the user subscribes to Naralimon communications, their data will be used to manage that subscription and send the requested communications. The user may unsubscribe at any time using the unsubscribe mechanism included in communications or by writing to naralimongroup@naralimon.com."}
         </p>
       </section>
 
@@ -128,8 +123,8 @@ function PrivacyContent({ locale }: { locale: Locale }) {
         <h2>{es ? "10. Destinatarios y encargados del tratamiento" : "10. Recipients and processors"}</h2>
         <p>
           {es
-            ? "Para prestar las funciones descritas pueden intervenir proveedores necesarios para operar el sitio y sus servicios, entre ellos Vercel para alojamiento y plataforma web, Google Workspace para correo electrónico, Mailrelay / IPZ Marketing para la lista de correo y Google Analytics para analítica cuando haya sido consentida. Estos proveedores tratarán datos únicamente en la medida necesaria para prestar sus servicios y conforme a las condiciones y garantías que resulten aplicables."
-            : "Providers necessary to operate the site and its services may process data for the functions described above, including Vercel for hosting and web platform services, Google Workspace for email, Mailrelay / IPZ Marketing for the mailing list, and Google Analytics for analytics where consent has been given. Such providers process data only to the extent necessary to provide their services and subject to the applicable terms and safeguards."}
+            ? "Para prestar las funciones descritas pueden intervenir proveedores necesarios para operar el sitio y sus servicios, entre ellos Vercel para alojamiento y plataforma web, Google Workspace para correo electrónico y Google Analytics para analítica cuando haya sido consentida. Estos proveedores tratarán datos únicamente en la medida necesaria para prestar sus servicios y conforme a las condiciones y garantías que resulten aplicables."
+            : "Providers necessary to operate the site and its services may process data for the functions described above, including Vercel for hosting and web platform services, Google Workspace for email, and Google Analytics for analytics where consent has been given. Such providers process data only to the extent necessary to provide their services and subject to the applicable terms and safeguards."}
         </p>
       </section>
 
