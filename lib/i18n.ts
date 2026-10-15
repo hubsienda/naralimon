@@ -2,7 +2,7 @@ import type { Locale } from "./types";
 
 export const copy = {
   es: {
-    nav: { home: "INICIO", klanz: "KLANZ", stories: "HISTORIAS", naralimon: "NARALIMON", contact: "CONTACTO" },
+    nav: { home: "INICIO", klanz: "KLANZ", playOnline: "JUEGA ONLINE", stories: "HISTORIAS", naralimon: "NARALIMON", contact: "CONTACTO" },
     hero: {
       eyebrow: "NACIDO EN LA COSTA DEL SOL",
       title: "TODO PUEDE SER UN JUEGO.",
@@ -10,14 +10,6 @@ export const copy = {
       primary: "JUEGA A ALGO",
       secondary: "SIGUE A NARALIMON",
       spark: "¿Y si lo normal dejara de ser normal?",
-    },
-    challenge: {
-      kicker: "PRIMERA PRUEBA",
-      title: "NO PULSES ESTE BOTÓN",
-      body: "En serio. Puedes seguir bajando. Nadie te obliga.",
-      button: "NO PULSAR",
-      again: "OTRA",
-      reset: "YA ESTÁ",
     },
     klanz: {
       kicker: "UN JUEGO REAL DE NARALIMON",
@@ -31,12 +23,6 @@ export const copy = {
       title: "TODO PUEDE SER UN JUEGO",
       lines: ["Una camiseta.", "Una toalla.", "Una mesa.", "Una botella.", "Un código QR.", "O algo que todavía no se nos ha ocurrido."],
       ending: "Estamos jugando con lo que viene después.",
-    },
-    choice: {
-      kicker: "SEGUNDA PRUEBA",
-      title: "ELIGE MAL",
-      body: "Tres botones. Ninguna garantía de que hayas elegido bien.",
-      truth: "VERDAD", dare: "RETO", bad: "MALA IDEA", again: "OTRA",
     },
     stories: {
       kicker: "COSAS DE NARALIMON",
@@ -84,7 +70,7 @@ export const copy = {
     footer: { privacy: "PRIVACIDAD", cookies: "COOKIES", legal: "AVISO LEGAL", manageCookies: "GESTIONAR COOKIES", line: "TODO PUEDE SER UN JUEGO." },
   },
   en: {
-    nav: { home: "HOME", klanz: "KLANZ", stories: "STORIES", naralimon: "NARALIMON", contact: "CONTACT" },
+    nav: { home: "HOME", klanz: "KLANZ", playOnline: "PLAY ONLINE", stories: "STORIES", naralimon: "NARALIMON", contact: "CONTACT" },
     hero: {
       eyebrow: "BORN ON THE COSTA DEL SOL",
       title: "EVERYTHING CAN BE A GAME.",
@@ -93,9 +79,6 @@ export const copy = {
       secondary: "FOLLOW NARALIMON",
       spark: "What if ordinary stopped being ordinary?",
     },
-    challenge: {
-      kicker: "FIRST TEST", title: "DO NOT PRESS THIS BUTTON", body: "Seriously. You can keep scrolling. Nobody is making you do it.", button: "DO NOT PRESS", again: "AGAIN", reset: "THAT'S ENOUGH",
-    },
     klanz: {
       kicker: "A REAL NARALIMON GAME", title: "KLANZ", body: "Strategy. Factions. Alliances. Betrayal.", sub: "A Naralimon card game.", cta: "DISCOVER KLANZ",
     },
@@ -103,9 +86,6 @@ export const copy = {
       label: "COMING SOON", title: "EVERYTHING CAN BE A GAME",
       lines: ["A T-shirt.", "A towel.", "A table.", "A bottle.", "A QR code.", "Or something we haven't thought of yet."],
       ending: "We're playing with what comes next.",
-    },
-    choice: {
-      kicker: "SECOND TEST", title: "CHOOSE BADLY", body: "Three buttons. No guarantee you chose well.", truth: "TRUTH", dare: "DARE", bad: "BAD IDEA", again: "AGAIN",
     },
     stories: {
       kicker: "THINGS FROM NARALIMON",
