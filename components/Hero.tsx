@@ -6,6 +6,7 @@ import SiteLink from "./SiteLink";
 
 export default function Hero({ locale }: { locale: Locale }) {
   const c = getCopy(locale).hero;
+  const gamesUrl = `${siteConfig.gamesBaseUrl}/${locale}`;
   return (
     <section className="hero section-pad">
       <div className="hero-orbit orbit-one" aria-hidden="true" />
@@ -16,7 +17,7 @@ export default function Hero({ locale }: { locale: Locale }) {
           <h1>{c.title}</h1>
           <p className="hero-body">{c.body}</p>
           <div className="hero-actions">
-            <a href="#play" className="button button-dark">{c.primary}</a>
+            <SiteLink href={gamesUrl} className="button button-dark">{c.primary}</SiteLink>
             <SiteLink href={siteConfig.socials.instagram} className="button button-light">{c.secondary}</SiteLink>
           </div>
         </div>
