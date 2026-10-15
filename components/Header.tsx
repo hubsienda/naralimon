@@ -13,9 +13,11 @@ export default function Header({ locale }: { locale: Locale }) {
   const [open, setOpen] = useState(false);
   const c = getCopy(locale).nav;
   const home = locale === "es" ? "/" : "/en";
+  const gamesUrl = `${siteConfig.gamesBaseUrl}/${locale}`;
   const links = [
     [c.home, home],
     [c.klanz, siteConfig.klanzUrl],
+    [c.playOnline, gamesUrl],
     [c.stories, locale === "es" ? "/historias" : "/en/stories"],
     [c.naralimon, locale === "es" ? "/naralimon" : "/en/naralimon"],
     [c.contact, locale === "es" ? "/contacto" : "/en/contact"],
