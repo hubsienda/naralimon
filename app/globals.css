@@ -74,18 +74,9 @@ h3 { font-size: clamp(1.45rem, 2.3vw, 2rem); }
 .hero-orbit { position: absolute; border: 2px dashed rgba(25,25,25,.16); border-radius: 50%; }
 .orbit-one { width: 360px; height: 360px; top: -140px; right: -70px; }
 .orbit-two { width: 250px; height: 250px; left: -100px; bottom: -90px; }
-.play-section { background: white; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .section-heading { margin-bottom: 2rem; }
 .centered { text-align: center; }
 .centered > p:last-child { max-width: 620px; margin: 1rem auto 0; }
-.challenge-box { min-height: 300px; display: grid; place-items: center; padding: clamp(1.5rem, 5vw, 3rem); border: 2px solid var(--ink); border-radius: 32px; background: linear-gradient(135deg, rgba(255,168,0,.10), rgba(173,255,41,.15)), var(--cream); box-shadow: 14px 14px 0 var(--lemon); text-align: center; }
-.forbidden-button { position: relative; width: 190px; height: 190px; border: 5px solid var(--ink); border-radius: 50%; background: var(--orange); color: var(--ink); box-shadow: 0 13px 0 var(--ink); cursor: pointer; font-family: var(--font-baloo), ui-rounded, sans-serif; font-weight: 900; transition: transform .12s ease, box-shadow .12s ease; }
-.forbidden-button::before { content: ""; position: absolute; inset: 12px; border: 2px dashed rgba(25,25,25,.35); border-radius: 50%; }
-.forbidden-button span { position: relative; z-index: 1; }
-.forbidden-button:hover { transform: translateY(5px) rotate(2deg); box-shadow: 0 8px 0 var(--ink); }
-.forbidden-button:active { transform: translateY(11px); box-shadow: 0 2px 0 var(--ink); }
-.challenge-text { max-width: 650px; margin: 0; font-family: var(--font-baloo), ui-rounded, sans-serif; font-size: clamp(1.35rem, 3vw, 2.05rem); font-weight: 700; line-height: 1.25; }
-.challenge-actions { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 1.2rem; margin-top: 2rem; }
 .klanz-section { overflow: hidden; background: var(--ink); color: white; }
 .klanz-grid { display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: clamp(3rem, 8vw, 8rem); }
 .eyebrow-light { color: var(--lemon); }
@@ -102,15 +93,6 @@ h3 { font-size: clamp(1.45rem, 2.3vw, 2rem); }
 .coming-label { display: inline-flex; margin-bottom: 1rem; padding: .35rem .7rem; border: 2px solid var(--ink); border-radius: 999px; background: var(--orange); font-family: var(--font-baloo), ui-rounded, sans-serif; font-size: .78rem; font-weight: 800; }
 .coming-list p { margin: 0; padding: .55rem 0; border-bottom: 1px solid var(--line); font-family: var(--font-baloo), ui-rounded, sans-serif; font-size: clamp(1.15rem, 2vw, 1.55rem); font-weight: 700; }
 .coming-list strong { display: block; margin-top: 1.4rem; font-size: 1.08rem; }
-.choice-section { background: var(--cream); }
-.choice-buttons { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-.choice-buttons button { min-height: 100px; border: 2px solid var(--ink); border-radius: 22px; background: white; font-family: var(--font-baloo), ui-rounded, sans-serif; font-size: clamp(1rem, 2vw, 1.35rem); font-weight: 800; cursor: pointer; box-shadow: 0 7px 0 var(--ink); transition: transform .15s ease, background .15s ease, box-shadow .15s ease; }
-.choice-buttons button:nth-child(1) { background: var(--lemon); }
-.choice-buttons button:nth-child(2) { background: var(--orange); }
-.choice-buttons button:nth-child(3) { background: white; }
-.choice-buttons button:hover { transform: translateY(-3px) rotate(-1deg); box-shadow: 0 10px 0 var(--ink); }
-.choice-result { margin-top: 2rem; padding: 1.5rem; border-left: 5px solid var(--orange); background: white; }
-.choice-result p { margin: 0 0 .7rem; font-size: 1.18rem; font-weight: 700; }
 .follow-section { background: var(--lemon); }
 .follow-top { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(2rem, 7vw, 7rem); align-items: end; }
 .follow-copy { margin: 0; font-size: clamp(1.15rem, 2vw, 1.45rem); }
@@ -186,10 +168,6 @@ h3 { font-size: clamp(1.45rem, 2.3vw, 2rem); }
   .logo-stage { width: 86%; border-radius: 25px; box-shadow: 10px 10px 0 var(--orange); }
   .hero-chip { width: 48px; height: 48px; font-size: 1.5rem; }
   .spark-card { width: 74%; padding: .8rem; font-size: .92rem; }
-  .challenge-box { min-height: 260px; border-radius: 24px; box-shadow: 8px 8px 0 var(--lemon); }
-  .forbidden-button { width: 160px; height: 160px; }
-  .choice-buttons { grid-template-columns: 1fr; }
-  .choice-buttons button { min-height: 72px; }
   .game-card { width: 150px; }
   .card-stack { min-height: 290px; }
   .newsletter-card { gap: 1.3rem; box-shadow: 7px 7px 0 var(--orange); }

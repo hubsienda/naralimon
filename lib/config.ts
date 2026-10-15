@@ -1,6 +1,7 @@
 export const siteConfig = {
   baseUrl: "https://naralimon.com",
   klanzUrl: "https://klanz.naralimon.com",
+  gamesBaseUrl: "https://www.naralimon.es",
   contactEmail: "naralimongroup@naralimon.com",
   gaId: process.env.NEXT_PUBLIC_GA_ID ?? "",
   socials: {
