@@ -1,5 +1,5 @@
 export const siteConfig = {
-  baseUrl: "https://naralimon.com",
+  baseUrl: "https://www.naralimon.com",
   gamesBaseUrl: "https://www.naralimon.es",
   klanzUrl: "https://klanz.naralimon.com",
   contactEmail: "naralimongroup@naralimon.com",
