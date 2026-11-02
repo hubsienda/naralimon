@@ -39,6 +39,7 @@ export default function BackToTopButton({ locale }: { locale: Locale }) {
           transform: translateY(-2px);
           background: var(--lemon);
           border-color: var(--lemon);
+          color: var(--ink);
         }
 
         .footer-top-button:focus-visible {
