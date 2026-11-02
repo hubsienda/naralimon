@@ -93,7 +93,7 @@ Google Analytics loads only after Analytics consent. If no measurement ID is sup
 
 Consent preferences are stored in first-party browser local storage under `naralimon-consent-v1`. Necessary storage remains active; Analytics is optional. The footer's **GESTIONAR COOKIES / MANAGE COOKIES** control reopens preferences.
 
-The previous gaming newsletter/Mailrelay integration is not part of the commercial website.
+The previous gaming newsletter and third-party signup integration are not part of the commercial website.
 
 ## Related Naralimon properties
 
