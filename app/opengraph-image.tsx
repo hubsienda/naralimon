@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Naralimon — Todo puede ser un juego";
+export const alt = "Naralimon — Food Brokerage & Commercial Representation";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -14,21 +14,21 @@ export default function OpenGraphImage() {
         flexDirection: "column",
         justifyContent: "space-between",
         padding: "72px 82px",
-        background: "#fffdf8",
-        color: "#191919",
-        border: "28px solid #191919",
+        background: "#f7f7f2",
+        color: "#252525",
+        borderTop: "18px solid #adff29",
       }}
     >
-      <div style={{ display: "flex", alignItems: "center", fontSize: 76, fontWeight: 800, letterSpacing: -4 }}>
-        <span style={{ color: "#ffa800" }}>nara</span><span style={{ color: "#74b800" }}>limon</span>
+      <div style={{ display: "flex", alignItems: "center", fontSize: 72, fontWeight: 800, letterSpacing: -3 }}>
+        <span style={{ color: "#ffa800" }}>nara</span><span style={{ color: "#6fae00" }}>limon</span>
       </div>
-      <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-        <div style={{ fontSize: 74, lineHeight: 1, fontWeight: 900, maxWidth: 920 }}>TODO PUEDE SER UN JUEGO.</div>
-        <div style={{ fontSize: 32, fontWeight: 600 }}>EVERYTHING CAN BE A GAME.</div>
+      <div style={{ display: "flex", flexDirection: "column", gap: 20, maxWidth: 980 }}>
+        <div style={{ fontSize: 68, lineHeight: 1.04, fontWeight: 850 }}>Intermediación alimentaria y representación comercial</div>
+        <div style={{ fontSize: 30, lineHeight: 1.25, fontWeight: 600 }}>Food Brokerage & Commercial Representation</div>
       </div>
-      <div style={{ display: "flex", gap: 16 }}>
-        <div style={{ width: 56, height: 56, borderRadius: 28, background: "#ffa800", border: "3px solid #191919" }} />
-        <div style={{ width: 56, height: 56, borderRadius: 28, background: "#adff29", border: "3px solid #191919" }} />
+      <div style={{ display: "flex", justifyContent: "space-between", fontSize: 24, fontWeight: 650 }}>
+        <span>Mijas Costa · Málaga · España</span>
+        <span>naralimon.com</span>
       </div>
     </div>,
     size,
