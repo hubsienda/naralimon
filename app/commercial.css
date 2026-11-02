@@ -380,6 +380,17 @@ h1, h2, h3 {
 .text-button { font-family: var(--font-sans), ui-sans-serif, sans-serif; }
 
 @media (max-width: 1040px) {
+  .commercial-header .desktop-nav { display: none; }
+  .commercial-header .menu-button { display: flex; }
+  .commercial-header .commercial-mobile-panel {
+    display: block;
+    max-height: 0;
+    overflow: hidden;
+    border-top: 0 solid rgba(255,255,255,.1);
+    transition: max-height .22s ease, border-width .22s ease;
+  }
+  .commercial-header .commercial-mobile-panel.is-open { max-height: 620px; border-top-width: 1px; }
+  .commercial-header .mobile-nav { display: grid; padding: 1.2rem 0 1.5rem; gap: .75rem; font-weight: 800; }
   .commercial-nav { gap: .8rem; font-size: .7rem; }
   .commercial-service-grid { grid-template-columns: 1fr; }
   .commercial-service-card,
