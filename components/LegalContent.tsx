@@ -4,8 +4,8 @@ import type { Locale } from "@/lib/types";
 
 type LegalKind = "privacy" | "cookies" | "legal";
 
-const LAST_UPDATED_ES = "13 de octubre de 2026";
-const LAST_UPDATED_EN = "13 October 2026";
+const LAST_UPDATED_ES = "2 de noviembre de 2026";
+const LAST_UPDATED_EN = "2 November 2026";
 
 function OwnerDetails({ locale }: { locale: Locale }) {
   const legal = siteConfig.legal;
@@ -28,8 +28,8 @@ function PrivacyContent({ locale }: { locale: Locale }) {
     <>
       <p className="legal-intro">
         {es
-          ? "Esta Política de Privacidad explica cómo Naralimon S.C. trata los datos personales a través de naralimon.com, las finalidades del tratamiento, las bases jurídicas aplicables y los derechos de las personas usuarias."
-          : "This Privacy Policy explains how Naralimon S.C. processes personal data through naralimon.com, the purposes of processing, the applicable legal bases and the rights available to users."}
+          ? "Esta Política de Privacidad explica cómo Naralimon S.C. trata los datos personales a través de naralimon.com, las finalidades del tratamiento, las bases jurídicas aplicables y los derechos de las personas interesadas."
+          : "This Privacy Policy explains how Naralimon S.C. processes personal data through naralimon.com, the purposes of processing, the applicable legal bases and the rights available to data subjects."}
       </p>
       <p><strong>{es ? "Última actualización:" : "Last updated:"}</strong> {es ? LAST_UPDATED_ES : LAST_UPDATED_EN}</p>
 
@@ -42,8 +42,8 @@ function PrivacyContent({ locale }: { locale: Locale }) {
         <h2>{es ? "2. Normativa aplicable" : "2. Applicable law"}</h2>
         <p>
           {es
-            ? "El tratamiento de datos personales se realiza de conformidad con el Reglamento (UE) 2016/679, Reglamento General de Protección de Datos (RGPD), la Ley Orgánica 3/2018, de 5 de diciembre, de Protección de Datos Personales y garantía de los derechos digitales (LOPDGDD), y las demás normas españolas y de la Unión Europea que resulten aplicables."
-            : "Personal data is processed in accordance with Regulation (EU) 2016/679, the General Data Protection Regulation (GDPR), Spanish Organic Law 3/2018 of 5 December on Personal Data Protection and Guarantee of Digital Rights (LOPDGDD), and other applicable Spanish and European Union data-protection rules."}
+            ? "El tratamiento de datos personales se realiza de conformidad con el Reglamento (UE) 2016/679, Reglamento General de Protección de Datos (RGPD), la Ley Orgánica 3/2018, de Protección de Datos Personales y garantía de los derechos digitales (LOPDGDD), y las demás normas españolas y de la Unión Europea que resulten aplicables."
+            : "Personal data is processed in accordance with Regulation (EU) 2016/679, the General Data Protection Regulation (GDPR), Spanish Organic Law 3/2018 on Personal Data Protection and Guarantee of Digital Rights (LOPDGDD), and other applicable Spanish and European Union data-protection rules."}
         </p>
       </section>
 
@@ -51,23 +51,22 @@ function PrivacyContent({ locale }: { locale: Locale }) {
         <h2>{es ? "3. Datos tratados" : "3. Personal data processed"}</h2>
         <p>
           {es
-            ? "Naralimon puede tratar los datos que facilites voluntariamente mediante el formulario de contacto, la suscripción al newsletter, la correspondencia por email y otras comunicaciones directas. También puede tratar datos de uso y analítica cuando hayas prestado el consentimiento correspondiente, así como información derivada de cookies, almacenamiento local y mecanismos técnicos necesarios para el funcionamiento y la seguridad del sitio."
-            : "Naralimon may process data you voluntarily provide through the contact form, newsletter subscription, email correspondence and other direct communications. It may also process website-use and analytics data where you have given the relevant consent, together with information arising from cookies, local storage and technical mechanisms necessary for the operation and security of the site."}
+            ? "Naralimon puede tratar los datos que facilites mediante el formulario de contacto y otras comunicaciones directas. El formulario comercial recoge nombre, empresa, email, teléfono opcional, tipo de consulta, producto o interés comercial, mensaje, idioma y fecha/hora del envío."
+            : "Naralimon may process data you provide through the contact form and other direct communications. The commercial enquiry form collects name, company, email, optional telephone number, enquiry type, product or commercial interest, message, language and the date/time of submission."}
         </p>
         <p>
           {es
-            ? "El formulario de contacto recoge nombre, email, mensaje, idioma y fecha/hora del envío. Naralimon no afirma recoger categorías de datos que no formen parte de las funciones realmente disponibles en el sitio."
-            : "The contact form collects name, email, message, language and the date/time of submission. Naralimon does not claim to collect categories of data that are not part of the functions actually available on the site."}
+            ? "Cuando se haya prestado el consentimiento correspondiente, también pueden tratarse datos de uso y analítica. El sitio utiliza además almacenamiento local y mecanismos técnicos necesarios para recordar preferencias, mantener la seguridad y prestar sus funciones."
+            : "Where the relevant consent has been given, website-use and analytics data may also be processed. The site also uses local storage and technical mechanisms needed to remember preferences, maintain security and provide its functions."}
         </p>
       </section>
 
       <section>
         <h2>{es ? "4. Finalidades del tratamiento" : "4. Purposes of processing"}</h2>
-        <p>{es ? "Los datos pueden tratarse para:" : "Personal data may be processed to:"}</p>
         <ul>
-          <li>{es ? "responder consultas y comunicaciones;" : "respond to enquiries and communications;"}</li>
-          <li>{es ? "gestionar comunicaciones relacionadas con Naralimon;" : "manage communications relating to Naralimon;"}</li>
-          <li>{es ? "gestionar suscripciones al newsletter y enviar comunicaciones cuando exista consentimiento;" : "manage newsletter subscriptions and send communications where consent has been given;"}</li>
+          <li>{es ? "responder consultas comerciales y otras comunicaciones;" : "respond to commercial enquiries and other communications;"}</li>
+          <li>{es ? "valorar posibles oportunidades de representación, intermediación o aprovisionamiento;" : "assess potential representation, brokerage or sourcing opportunities;"}</li>
+          <li>{es ? "gestionar comunicaciones precontractuales solicitadas por la persona interesada;" : "manage pre-contractual communications requested by the data subject;"}</li>
           <li>{es ? "medir y analizar el uso del sitio cuando se haya aceptado la categoría Analítica;" : "measure and analyse website use where the Analytics category has been accepted;"}</li>
           <li>{es ? "mantener la seguridad, integridad y funcionamiento técnico del sitio;" : "maintain the security, integrity and technical operation of the site;"}</li>
           <li>{es ? "cumplir obligaciones legales aplicables." : "comply with applicable legal obligations."}</li>
@@ -78,8 +77,8 @@ function PrivacyContent({ locale }: { locale: Locale }) {
         <h2>{es ? "5. Base jurídica" : "5. Legal bases"}</h2>
         <p>
           {es
-            ? "La base jurídica depende de la finalidad concreta. El consentimiento se utiliza para el newsletter, Google Analytics y otros tratamientos opcionales que lo requieran. Cuando una consulta esté relacionada con una posible relación comercial, el tratamiento puede ser necesario para aplicar medidas precontractuales solicitadas por la persona interesada. El cumplimiento de obligaciones legales constituye la base cuando corresponda. El interés legítimo puede resultar aplicable de forma limitada, por ejemplo para proteger la seguridad e integridad técnica del sitio o atender comunicaciones generales, siempre que dicho interés no prevalezca sobre los derechos y libertades de la persona interesada. No se utiliza el interés legítimo como justificación genérica para todos los tratamientos."
-            : "The legal basis depends on the specific purpose. Consent is used for the newsletter, Google Analytics and other optional processing that requires it. Where an enquiry concerns a possible commercial relationship, processing may be necessary to take pre-contractual steps requested by the data subject. Compliance with legal obligations provides the basis where applicable. Legitimate interests may apply on a limited basis, for example to protect the security and technical integrity of the site or to deal with general communications, provided those interests are not overridden by the rights and freedoms of the individual. Legitimate interests are not used as a blanket justification for all processing."}
+            ? "Cuando una consulta se refiere a una posible relación comercial, el tratamiento puede ser necesario para aplicar medidas precontractuales solicitadas por la persona interesada. Google Analytics se basa en el consentimiento y no se carga antes de obtenerlo. El cumplimiento de obligaciones legales constituye la base cuando corresponda. El interés legítimo puede resultar aplicable de forma limitada para proteger la seguridad e integridad técnica del sitio o atender comunicaciones generales, siempre que no prevalezcan los derechos y libertades de la persona interesada."
+            : "Where an enquiry concerns a possible commercial relationship, processing may be necessary to take pre-contractual steps requested by the data subject. Google Analytics relies on consent and does not load before consent is obtained. Compliance with legal obligations provides the basis where applicable. Legitimate interests may apply on a limited basis to protect the security and technical integrity of the site or deal with general communications, provided those interests are not overridden by the rights and freedoms of the individual."}
         </p>
       </section>
 
@@ -87,58 +86,49 @@ function PrivacyContent({ locale }: { locale: Locale }) {
         <h2>{es ? "6. Formulario de contacto y correo electrónico" : "6. Contact form and email"}</h2>
         <p>
           {es
-            ? "Los mensajes enviados desde el formulario de contacto se remiten mediante un proceso de correo del servidor a naralimongroup@naralimon.com. El email facilitado por la persona usuaria se utiliza como dirección de respuesta (Reply-To). El sitio no crea una base de datos independiente de consultas. La entrega del correo utiliza la infraestructura configurada para Naralimon, actualmente Google Workspace."
-            : "Messages submitted through the contact form are sent by a server-side mail process to naralimongroup@naralimon.com. The user's email address is used as the Reply-To address. The website does not create a separate enquiries database. Email delivery uses the infrastructure configured for Naralimon, currently Google Workspace."}
+            ? "Los mensajes enviados desde el formulario de contacto se remiten mediante un proceso de correo del servidor a naralimongroup@naralimon.com. El email facilitado se utiliza como dirección de respuesta (Reply-To). El sitio no crea una base de datos independiente de consultas. La entrega del correo utiliza la infraestructura configurada para Naralimon, actualmente Google Workspace."
+            : "Messages submitted through the contact form are sent by a server-side mail process to naralimongroup@naralimon.com. The email address provided is used as the Reply-To address. The website does not create a separate enquiries database. Email delivery uses the infrastructure configured for Naralimon, currently Google Workspace."}
         </p>
       </section>
 
       <section>
-        <h2>{es ? "7. Newsletter y comunicaciones" : "7. Newsletter and communications"}</h2>
+        <h2>7. Google Analytics</h2>
         <p>
           {es
-            ? "Si el usuario se suscribe a comunicaciones de Naralimon, sus datos se utilizarán para gestionar dicha suscripción y enviar las comunicaciones solicitadas. El usuario podrá darse de baja en cualquier momento mediante el mecanismo de cancelación incluido en las comunicaciones o escribiendo a naralimongroup@naralimon.com."
-            : "If the user subscribes to Naralimon communications, their data will be used to manage that subscription and send the requested communications. The user may unsubscribe at any time using the unsubscribe mechanism included in communications or by writing to naralimongroup@naralimon.com."}
+            ? "Naralimon utiliza Google Analytics únicamente cuando la persona usuaria ha consentido la categoría Analítica. El script no se carga antes de ese consentimiento. Los datos analíticos se utilizan para comprender de forma agregada cómo se usa el sitio y mejorar su funcionamiento y contenido. La analítica no se considera esencial."
+            : "Naralimon uses Google Analytics only where the user has consented to the Analytics category. The script does not load before that consent is given. Analytics data is used to understand, in aggregate, how the site is used and to improve its operation and content. Analytics is not treated as essential."}
         </p>
       </section>
 
       <section>
-        <h2>{es ? "8. Google Analytics" : "8. Google Analytics"}</h2>
+        <h2>{es ? "8. Conservación" : "8. Retention"}</h2>
         <p>
           {es
-            ? "Naralimon utiliza Google Analytics únicamente cuando la persona usuaria ha consentido la categoría Analítica. El script de Google Analytics no se carga antes de ese consentimiento. Los datos analíticos se utilizan para comprender cómo se usa el sitio, obtener estadísticas agregadas y mejorar su funcionamiento y contenido. La analítica no se considera esencial."
-            : "Naralimon uses Google Analytics only where the user has consented to the Analytics category. The Google Analytics script does not load before that consent is given. Analytics data is used to understand how the site is used, obtain aggregate statistics and improve its operation and content. Analytics is not treated as essential."}
+            ? "Los datos personales se conservarán únicamente durante el tiempo necesario para la finalidad correspondiente y, cuando resulte aplicable, durante los periodos exigidos por obligaciones legales. Las consultas comerciales se conservarán durante el tiempo necesario para gestionarlas, evaluar la oportunidad y atender posibles obligaciones relacionadas. La conservación de datos de Analytics depende de la configuración aplicable del servicio."
+            : "Personal data will be retained only for as long as necessary for the relevant purpose and, where applicable, for periods required by law. Commercial enquiries will be retained for as long as needed to deal with them, assess the opportunity and meet any related obligations. Retention of Analytics data depends on the applicable service configuration."}
         </p>
       </section>
 
       <section>
-        <h2>{es ? "9. Conservación" : "9. Retention"}</h2>
+        <h2>{es ? "9. Destinatarios y encargados del tratamiento" : "9. Recipients and processors"}</h2>
         <p>
           {es
-            ? "Los datos personales se conservarán únicamente durante el tiempo necesario para la finalidad correspondiente y, cuando resulte aplicable, durante los periodos exigidos por obligaciones legales. Las consultas se conservarán durante el tiempo necesario para gestionarlas y atender posibles obligaciones relacionadas. Los datos de newsletter se mantendrán mientras continúe la suscripción o hasta que se retire el consentimiento o se solicite la baja, sin perjuicio de las obligaciones legales que puedan exigir una conservación adicional. La conservación de datos de Analytics depende de la configuración aplicable del servicio."
-            : "Personal data will be retained only for as long as necessary for the relevant purpose and, where applicable, for periods required by law. Enquiries will be retained for as long as needed to deal with them and meet any related obligations. Newsletter data will be retained while the subscription remains active or until consent is withdrawn or the user unsubscribes, subject to any legal obligations requiring additional retention. Retention of Analytics data depends on the applicable service configuration."}
+            ? "Para operar el sitio y sus funciones pueden intervenir proveedores como Vercel para alojamiento y plataforma web, Google Workspace para correo electrónico y Google Analytics para analítica cuando haya sido consentida. Estos proveedores tratarán datos únicamente en la medida necesaria para prestar sus servicios y conforme a las condiciones y garantías aplicables."
+            : "Providers may process data to operate the site and its functions, including Vercel for hosting and web platform services, Google Workspace for email and Google Analytics for analytics where consent has been given. Such providers process data only to the extent necessary to provide their services and subject to applicable terms and safeguards."}
         </p>
       </section>
 
       <section>
-        <h2>{es ? "10. Destinatarios y encargados del tratamiento" : "10. Recipients and processors"}</h2>
+        <h2>{es ? "10. Transferencias internacionales" : "10. International transfers"}</h2>
         <p>
           {es
-            ? "Para prestar las funciones descritas pueden intervenir proveedores necesarios para operar el sitio y sus servicios, entre ellos Vercel para alojamiento y plataforma web, Google Workspace para correo electrónico y Google Analytics para analítica cuando haya sido consentida. Estos proveedores tratarán datos únicamente en la medida necesaria para prestar sus servicios y conforme a las condiciones y garantías que resulten aplicables."
-            : "Providers necessary to operate the site and its services may process data for the functions described above, including Vercel for hosting and web platform services, Google Workspace for email, and Google Analytics for analytics where consent has been given. Such providers process data only to the extent necessary to provide their services and subject to the applicable terms and safeguards."}
+            ? "Algunos proveedores pueden tratar datos fuera del Espacio Económico Europeo. Cuando una transferencia internacional esté sujeta al RGPD, deberán utilizarse los mecanismos y garantías previstos por la normativa aplicable, como decisiones de adecuación u otras garantías válidas."
+            : "Some providers may process data outside the European Economic Area. Where an international transfer is subject to the GDPR, the mechanisms and safeguards required by applicable law must be used, such as adequacy decisions or other valid safeguards."}
         </p>
       </section>
 
       <section>
-        <h2>{es ? "11. Transferencias internacionales" : "11. International transfers"}</h2>
-        <p>
-          {es
-            ? "Algunos proveedores pueden tratar datos fuera del Espacio Económico Europeo. Cuando una transferencia internacional esté sujeta al RGPD, deberán utilizarse los mecanismos y garantías previstos por la normativa aplicable, como decisiones de adecuación u otras garantías válidas. Esta política no atribuye ubicaciones concretas de tratamiento cuando no están verificadas."
-            : "Some providers may process data outside the European Economic Area. Where an international transfer is subject to the GDPR, the mechanisms and safeguards required by applicable law must be used, such as adequacy decisions or other valid safeguards. This policy does not attribute specific processing locations where they have not been verified."}
-        </p>
-      </section>
-
-      <section>
-        <h2>{es ? "12. Derechos" : "12. Your rights"}</h2>
+        <h2>{es ? "11. Derechos" : "11. Your rights"}</h2>
         <p>
           {es
             ? "Puedes ejercer, cuando proceda, tus derechos de acceso, rectificación, supresión, oposición, limitación del tratamiento y portabilidad, así como retirar el consentimiento en cualquier momento sin que ello afecte a la licitud del tratamiento realizado previamente. Las solicitudes pueden enviarse a naralimongroup@naralimon.com."
@@ -147,7 +137,7 @@ function PrivacyContent({ locale }: { locale: Locale }) {
       </section>
 
       <section>
-        <h2>{es ? "13. Autoridad de control" : "13. Supervisory authority"}</h2>
+        <h2>{es ? "12. Autoridad de control" : "12. Supervisory authority"}</h2>
         <p>
           {es
             ? "Si consideras que el tratamiento de tus datos personales infringe la normativa aplicable, puedes presentar una reclamación ante la Agencia Española de Protección de Datos (AEPD)."
@@ -156,16 +146,16 @@ function PrivacyContent({ locale }: { locale: Locale }) {
       </section>
 
       <section>
-        <h2>{es ? "14. Menores" : "14. Children"}</h2>
+        <h2>{es ? "13. Menores" : "13. Children"}</h2>
         <p>
           {es
-            ? "El sitio no está específicamente dirigido a menores con la finalidad de recoger sus datos personales. Naralimon no solicita de forma consciente datos personales innecesarios de menores. Si se detectara que se han facilitado datos de un menor sin la base o autorización necesaria, se adoptarán las medidas oportunas conforme a la normativa aplicable."
-            : "The site is not specifically directed at children for the purpose of collecting their personal data. Naralimon does not knowingly seek unnecessary personal data from children. If it becomes apparent that a child's data has been provided without the necessary legal basis or authorisation, appropriate steps will be taken in accordance with applicable law."}
+            ? "El sitio comercial no está dirigido a menores ni diseñado para recoger sus datos personales. Si se detectara que se han facilitado datos de un menor sin la base o autorización necesaria, se adoptarán las medidas oportunas conforme a la normativa aplicable."
+            : "The commercial site is not directed at children or designed to collect their personal data. If it becomes apparent that a child's data has been provided without the necessary legal basis or authorisation, appropriate steps will be taken in accordance with applicable law."}
         </p>
       </section>
 
       <section>
-        <h2>{es ? "15. Cambios en esta política" : "15. Changes to this policy"}</h2>
+        <h2>{es ? "14. Cambios en esta política" : "14. Changes to this policy"}</h2>
         <p>
           {es
             ? "Esta Política de Privacidad puede actualizarse para reflejar cambios legales, técnicos u operativos. La fecha de última actualización indicada al inicio permite identificar la versión vigente."
@@ -182,8 +172,8 @@ function CookieContent({ locale }: { locale: Locale }) {
     <>
       <p className="legal-intro">
         {es
-          ? "Esta Política de Cookies describe el almacenamiento y las tecnologías utilizadas por naralimon.com y explica cómo puedes aceptar, rechazar o modificar las categorías opcionales."
-          : "This Cookie Policy describes the storage and technologies used by naralimon.com and explains how you can accept, reject or change optional categories."}
+          ? "Esta Política de Cookies describe el almacenamiento y las tecnologías utilizadas por naralimon.com y explica cómo puedes aceptar, rechazar o modificar la analítica opcional."
+          : "This Cookie Policy describes the storage and technologies used by naralimon.com and explains how you can accept, reject or change optional analytics."}
       </p>
       <p><strong>{es ? "Última actualización:" : "Last updated:"}</strong> {es ? LAST_UPDATED_ES : LAST_UPDATED_EN}</p>
 
@@ -197,12 +187,10 @@ function CookieContent({ locale }: { locale: Locale }) {
       </section>
 
       <section>
-        <h2>{es ? "2. Categorías utilizadas por el sistema de consentimiento" : "2. Categories used by the consent system"}</h2>
-        <p>{es ? "El gestor de consentimiento distingue las siguientes categorías:" : "The consent manager distinguishes the following categories:"}</p>
+        <h2>{es ? "2. Categorías utilizadas" : "2. Categories used"}</h2>
         <ul>
-          <li><strong>{es ? "Necesarias:" : "Necessary:"}</strong> {es ? "siempre activas para el almacenamiento o funcionamiento esencial que no requiere consentimiento." : "always enabled for storage or essential operation that does not require consent."}</li>
+          <li><strong>{es ? "Necesarias:" : "Necessary:"}</strong> {es ? "almacenamiento o funciones esenciales que no requieren consentimiento." : "storage or essential functions that do not require consent."}</li>
           <li><strong>{es ? "Analíticas:" : "Analytics:"}</strong> {es ? "opcionales y activadas únicamente después del consentimiento." : "optional and enabled only after consent."}</li>
-          <li><strong>{es ? "Marketing / terceros:" : "Marketing / third parties:"}</strong> {es ? "opcionales y utilizadas para cargar contenido o servicios de terceros que requieren esa elección, como el formulario de Mailrelay." : "optional and used to load third-party content or services that require that choice, such as the Mailrelay form."}</li>
         </ul>
       </section>
 
@@ -210,8 +198,8 @@ function CookieContent({ locale }: { locale: Locale }) {
         <h2>{es ? "3. Almacenamiento necesario" : "3. Necessary storage"}</h2>
         <p>
           {es
-            ? "El almacenamiento necesario puede utilizarse para recordar tus preferencias de cookies, permitir funciones esenciales y apoyar la seguridad y el funcionamiento técnico del sitio. Cuando estos mecanismos sean legalmente exentos de consentimiento, permanecen activos."
-            : "Necessary storage may be used to remember your cookie preferences, enable essential functions and support the security and technical operation of the site. Where such mechanisms are legally exempt from consent, they remain enabled."}
+            ? "El almacenamiento necesario se utiliza para recordar tus preferencias de cookies y apoyar funciones esenciales, la seguridad y el funcionamiento técnico del sitio."
+            : "Necessary storage is used to remember your cookie preferences and support essential functions, security and the technical operation of the site."}
         </p>
         <div className="cookie-table-wrap">
           <table className="cookie-table">
@@ -220,7 +208,7 @@ function CookieContent({ locale }: { locale: Locale }) {
               <tr>
                 <td><code>naralimon-consent-v1</code></td>
                 <td>localStorage</td>
-                <td>{es ? "Recordar las categorías de consentimiento aceptadas o rechazadas." : "Remember which consent categories have been accepted or rejected."}</td>
+                <td>{es ? "Recordar si se ha aceptado o rechazado la analítica." : "Remember whether analytics has been accepted or rejected."}</td>
                 <td>{es ? "Hasta que cambies las preferencias o elimines el almacenamiento del navegador." : "Until you change preferences or clear browser storage."}</td>
               </tr>
             </tbody>
@@ -232,8 +220,8 @@ function CookieContent({ locale }: { locale: Locale }) {
         <h2>{es ? "4. Cookies analíticas — Google Analytics" : "4. Analytics cookies — Google Analytics"}</h2>
         <p>
           {es
-            ? "Google Analytics es opcional y solo se carga después de que aceptes la categoría Analítica. Se utiliza para medir el uso del sitio, obtener estadísticas agregadas y ayudar a mejorar la web. Si no aceptas Analítica, el script de Google Analytics no se carga. Si retiras posteriormente el consentimiento, el sitio desactiva Analytics y elimina las cookies _ga accesibles desde el dominio."
-            : "Google Analytics is optional and loads only after you accept the Analytics category. It is used to measure website use, obtain aggregate statistics and help improve the site. If you do not accept Analytics, the Google Analytics script does not load. If you later withdraw consent, the site disables Analytics and removes accessible _ga cookies from the domain."}
+            ? "Google Analytics es opcional y solo se carga después de que aceptes Analítica. Se utiliza para medir el uso del sitio, obtener estadísticas agregadas y ayudar a mejorar la web. Si no aceptas Analítica, el script no se carga. Si retiras posteriormente el consentimiento, el sitio desactiva Analytics y elimina las cookies _ga accesibles desde el dominio."
+            : "Google Analytics is optional and loads only after you accept Analytics. It is used to measure website use, obtain aggregate statistics and help improve the site. If you do not accept Analytics, the script does not load. If you later withdraw consent, the site disables Analytics and removes accessible _ga cookies from the domain."}
         </p>
         <div className="cookie-table-wrap">
           <table className="cookie-table">
@@ -247,52 +235,34 @@ function CookieContent({ locale }: { locale: Locale }) {
       </section>
 
       <section>
-        <h2>{es ? "5. Marketing / terceros" : "5. Marketing / third parties"}</h2>
+        <h2>{es ? "5. Gestión del consentimiento" : "5. Managing consent"}</h2>
         <p>
           {es
-            ? "Esta categoría es opcional. Los servicios de terceros sujetos a esta categoría solo se cargan cuando la persona usuaria los ha consentido. Actualmente se utiliza para controlar la carga del formulario de suscripción de Mailrelay. Naralimon no afirma que existan otras cookies publicitarias activas si no han sido incorporadas realmente al sitio."
-            : "This category is optional. Third-party services subject to this category load only when the user has consented to them. It is currently used to control loading of the Mailrelay subscription form. Naralimon does not claim that other advertising cookies are active unless they have actually been introduced on the site."}
+            ? "El banner permite aceptar Analítica, rechazar las categorías no esenciales o abrir Preferencias. El almacenamiento necesario permanece activo. Puedes volver a abrir la configuración en cualquier momento mediante GESTIONAR COOKIES en el pie de página."
+            : "The banner lets you accept Analytics, reject non-essential categories or open Preferences. Necessary storage remains enabled. You can reopen the settings at any time through MANAGE COOKIES in the footer."}
         </p>
       </section>
 
       <section>
-        <h2>{es ? "6. Mailrelay" : "6. Mailrelay"}</h2>
+        <h2>{es ? "6. Retirada o cambio del consentimiento" : "6. Withdrawing or changing consent"}</h2>
         <p>
           {es
-            ? "El formulario de suscripción de Mailrelay / IPZ Marketing es un elemento alojado por un tercero. En naralimon.com, su iframe y el script asociado no se cargan hasta que aceptas Marketing / terceros. Una vez cargado, Mailrelay puede recibir información técnica de la conexión y utilizar cookies u otros mecanismos de acuerdo con su propio servicio y configuración. El formulario no se considera estrictamente necesario para el funcionamiento básico del sitio."
-            : "The Mailrelay / IPZ Marketing subscription form is a third-party hosted element. On naralimon.com, its iframe and associated script do not load until you accept Marketing / third parties. Once loaded, Mailrelay may receive technical connection information and use cookies or similar mechanisms in accordance with its own service and configuration. The form is not treated as strictly necessary for the basic operation of the site."}
+            ? "Puedes cambiar o retirar el consentimiento analítico en cualquier momento mediante el control de preferencias. La retirada no afecta a la licitud de los tratamientos realizados antes del cambio."
+            : "You may change or withdraw analytics consent at any time through the preferences control. Withdrawal does not affect the lawfulness of processing carried out before the change."}
         </p>
       </section>
 
       <section>
-        <h2>{es ? "7. Gestión del consentimiento" : "7. Managing consent"}</h2>
+        <h2>{es ? "7. Normativa aplicable" : "7. Applicable law"}</h2>
         <p>
           {es
-            ? "El banner de cookies permite elegir ACEPTAR TODO, RECHAZAR NO ESENCIALES o PREFERENCIAS. Las categorías necesarias permanecen siempre activas. Analítica y Marketing / terceros son opcionales. Puedes volver a abrir la configuración en cualquier momento mediante GESTIONAR COOKIES en el pie de página."
-            : "The cookie banner allows you to choose ACCEPT ALL, REJECT NON-ESSENTIAL or PREFERENCES. Necessary storage remains enabled. Analytics and Marketing / third parties are optional. You can reopen the settings at any time through MANAGE COOKIES in the footer."}
+            ? "Esta política se interpreta de acuerdo con el Reglamento (UE) 2016/679 (RGPD), la Ley Orgánica 3/2018 (LOPDGDD) y, en materia de servicios de la sociedad de la información y uso de cookies, la Ley 34/2002 (LSSI-CE), además de las demás normas aplicables."
+            : "This policy is governed by Regulation (EU) 2016/679 (GDPR), Spanish Organic Law 3/2018 (LOPDGDD) and, in relation to information-society services and cookies, Spanish Law 34/2002 (LSSI-CE), together with other applicable rules."}
         </p>
       </section>
 
       <section>
-        <h2>{es ? "8. Retirada o cambio del consentimiento" : "8. Withdrawing or changing consent"}</h2>
-        <p>
-          {es
-            ? "Puedes cambiar o retirar el consentimiento en cualquier momento mediante el control de preferencias. La retirada no afecta a la licitud de los tratamientos realizados antes del cambio. Si desactivas Marketing / terceros, el formulario de Mailrelay dejará de cargarse en nuevas vistas o después de recargar la página."
-            : "You may change or withdraw consent at any time through the preferences control. Withdrawal does not affect the lawfulness of processing carried out before the change. If you disable Marketing / third parties, the Mailrelay form will no longer load on new views or after the page is reloaded."}
-        </p>
-      </section>
-
-      <section>
-        <h2>{es ? "9. Normativa aplicable" : "9. Applicable law"}</h2>
-        <p>
-          {es
-            ? "Esta política se interpreta de acuerdo con el Reglamento (UE) 2016/679, Reglamento General de Protección de Datos (RGPD), la Ley Orgánica 3/2018 (LOPDGDD) y, en materia de servicios de la sociedad de la información y uso de cookies, la Ley 34/2002, de servicios de la sociedad de la información y de comercio electrónico (LSSI-CE), además de las demás normas aplicables."
-            : "This policy is governed by Regulation (EU) 2016/679, the General Data Protection Regulation (GDPR), Spanish Organic Law 3/2018 (LOPDGDD) and, in relation to information-society services and cookies, Spanish Law 34/2002 on Information Society Services and Electronic Commerce (LSSI-CE), together with other applicable rules."}
-        </p>
-      </section>
-
-      <section>
-        <h2>{es ? "10. Cambios en esta política" : "10. Changes to this policy"}</h2>
+        <h2>{es ? "8. Cambios en esta política" : "8. Changes to this policy"}</h2>
         <p>
           {es
             ? "Esta Política de Cookies puede actualizarse para reflejar cambios legales, técnicos o en los servicios utilizados por Naralimon."
@@ -332,7 +302,7 @@ function LegalNoticeContent({ locale }: { locale: Locale }) {
       <section><h2>{es ? "1. Titular del sitio" : "1. Website owner"}</h2><LegalNoticeOwnerDetails locale={locale} /></section>
       <section><h2>{es ? "2. Propiedad intelectual" : "2. Intellectual property"}</h2><p>{es ? "Salvo indicación en contrario, la identidad Naralimon, sus textos, diseños, ilustraciones, juegos, materiales y demás contenidos del sitio están protegidos por los derechos que correspondan a sus respectivos titulares. El acceso al sitio no transfiere derechos de propiedad intelectual o industrial." : "Unless stated otherwise, the Naralimon identity, texts, designs, illustrations, games, materials and other site content are protected by the rights belonging to their respective owners. Access to the site does not transfer intellectual or industrial property rights."}</p></section>
       <section><h2>{es ? "3. Uso permitido" : "3. Permitted use"}</h2><p>{es ? "Puedes navegar, compartir enlaces y utilizar las funciones públicas para su finalidad prevista. No puedes atribuirte los contenidos, explotarlos comercialmente sin autorización, interferir con el sitio o utilizarlo de forma ilícita." : "You may browse, share links and use public features for their intended purpose. You may not claim ownership of content, exploit it commercially without permission, interfere with the site or use it unlawfully."}</p></section>
-      <section><h2>{es ? "4. Disponibilidad y responsabilidad" : "4. Availability and liability"}</h2><p>{es ? "Naralimon procura mantener el sitio disponible y correcto, pero no garantiza disponibilidad ininterrumpida ni que todo contenido permanezca sin cambios. Los juegos y retos del sitio son recreativos; deben utilizarse con sentido común y sin poner en riesgo a personas o bienes." : "Naralimon aims to keep the site available and accurate, but does not guarantee uninterrupted availability or that all content will remain unchanged. Site games and challenges are recreational; they should be used with common sense and without putting people or property at risk."}</p></section>
+      <section><h2>{es ? "4. Disponibilidad y responsabilidad" : "4. Availability and liability"}</h2><p>{es ? "Naralimon procura mantener el sitio disponible y correcto, pero no garantiza disponibilidad ininterrumpida ni que todo contenido permanezca sin cambios. La información comercial publicada tiene carácter general y no sustituye la verificación de las condiciones concretas de cada operación." : "Naralimon aims to keep the site available and accurate, but does not guarantee uninterrupted availability or that all content will remain unchanged. Commercial information published on the site is general and does not replace verification of the specific terms of each transaction."}</p></section>
       <section><h2>{es ? "5. Enlaces de terceros" : "5. Third-party links"}</h2><p>{es ? "El sitio puede enlazar o integrar proyectos y plataformas externas, como KLANZ, Instagram o proveedores de correo. Esos servicios tienen sus propias condiciones y políticas y Naralimon no controla su contenido o disponibilidad." : "The site may link to or integrate external projects and platforms such as KLANZ, Instagram or mail providers. Those services have their own terms and policies and Naralimon does not control their content or availability."}</p></section>
       <section>
         <h2>{es ? "6. Ley y jurisdicción" : "6. Governing law and jurisdiction"}</h2>
