@@ -18,6 +18,7 @@ export function storyMetadata(story: Story, translation?: Story): Metadata {
   return {
     title: `${story.title} | Naralimon`,
     description: story.description,
+    robots: { index: false, follow: true },
     alternates: {
       canonical,
       languages: {
@@ -33,7 +34,7 @@ export function storyMetadata(story: Story, translation?: Story): Metadata {
       title: story.title,
       description: story.description,
       publishedTime: `${story.date}T12:00:00.000Z`,
-      images: [{ url: imageUrl, alt: story.image ? story.title : "Naralimon — Everything can be a game" }],
+      images: [{ url: imageUrl, alt: story.image ? story.title : "Naralimon archive" }],
     },
   };
 }
