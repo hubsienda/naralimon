@@ -5,34 +5,60 @@ import { FormEvent, useState } from "react";
 import type { Locale } from "@/lib/types";
 
 type FormState = "idle" | "loading" | "success" | "error";
+type ErrorKind = "validation" | "rate_limited" | "send_failed" | "unknown" | null;
 
 export default function ContactForm({ locale }: { locale: Locale }) {
   const [state, setState] = useState<FormState>("idle");
+  const [errorKind, setErrorKind] = useState<ErrorKind>(null);
+
   const text = locale === "es"
     ? {
         name: "Nombre",
+        company: "Empresa",
         email: "Email",
+        telephone: "Teléfono (opcional)",
+        enquiryType: "Tipo de consulta",
+        manufacturer: "Fabricante / productor",
+        buyer: "Comprador profesional",
+        other: "Otra consulta comercial",
+        choose: "Selecciona una opción",
+        interest: "Producto o interés comercial",
+        interestPlaceholder: "Producto, categoría, mercado o necesidad de compra",
         message: "Mensaje",
-        button: "ENVIAR",
+        button: "ENVIAR CONSULTA",
         sending: "ENVIANDO…",
         consentPrefix: "He leído y acepto la",
         privacy: "Política de Privacidad",
-        successTitle: "MENSAJE ENVIADO",
-        successBody: "Gracias. Te responderemos lo antes posible.",
-        error: "No hemos podido enviar el mensaje. Inténtalo de nuevo.",
+        successTitle: "CONSULTA ENVIADA",
+        successBody: "Gracias. Revisaremos la información y responderemos si vemos un posible encaje comercial.",
+        validation: "Revisa los campos obligatorios y vuelve a intentarlo.",
+        rateLimited: "Se han enviado demasiadas solicitudes desde esta conexión. Inténtalo de nuevo más tarde.",
+        sendFailed: "No hemos podido entregar el mensaje. Inténtalo de nuevo o escribe a naralimongroup@naralimon.com.",
       }
     : {
         name: "Name",
+        company: "Company",
         email: "Email",
+        telephone: "Telephone (optional)",
+        enquiryType: "Enquiry type",
+        manufacturer: "Manufacturer / producer",
+        buyer: "Professional buyer",
+        other: "Other commercial enquiry",
+        choose: "Choose an option",
+        interest: "Product or commercial interest",
+        interestPlaceholder: "Product, category, market or purchasing requirement",
         message: "Message",
-        button: "SEND",
+        button: "SEND ENQUIRY",
         sending: "SENDING…",
         consentPrefix: "I have read and accept the",
         privacy: "Privacy Policy",
-        successTitle: "MESSAGE SENT",
-        successBody: "Thank you. We'll get back to you as soon as possible.",
-        error: "We couldn't send your message. Please try again.",
+        successTitle: "ENQUIRY SENT",
+        successBody: "Thank you. We will review the information and reply if we see a possible commercial fit.",
+        validation: "Please review the required fields and try again.",
+        rateLimited: "Too many requests have been sent from this connection. Please try again later.",
+        sendFailed: "We could not deliver your message. Please try again or email naralimongroup@naralimon.com.",
       };
+
   const privacyHref = locale === "es" ? "/privacidad" : "/en/privacy";
 
   const submit = async (event: FormEvent<HTMLFormElement>) => {
@@ -42,6 +68,7 @@ export default function ContactForm({ locale }: { locale: Locale }) {
     const formElement = event.currentTarget;
     const form = new FormData(formElement);
     setState("loading");
+    setErrorKind(null);
 
     try {
       const response = await fetch("/api/contact", {
@@ -49,30 +76,70 @@ export default function ContactForm({ locale }: { locale: Locale }) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           name: form.get("name"),
+          companyName: form.get("companyName"),
           email: form.get("email"),
+          telephone: form.get("telephone"),
+          enquiryType: form.get("enquiryType"),
+          productInterest: form.get("productInterest"),
           message: form.get("message"),
-          company: form.get("company"),
+          website: form.get("website"),
           privacyAccepted: form.get("privacy") === "on",
           locale,
         }),
       });
 
-      if (!response.ok) throw new Error("send_failed");
+      const result = await response.json().catch(() => ({ error: "unknown" })) as { ok?: boolean; error?: string };
+      if (!response.ok || result.ok !== true) {
+        setErrorKind(
+          result.error === "validation" ? "validation"
+            : result.error === "rate_limited" ? "rate_limited"
+              : result.error === "send_failed" ? "send_failed"
+                : "unknown",
+        );
+        setState("error");
+        return;
+      }
+
       formElement.reset();
       setState("success");
     } catch {
+      setErrorKind("send_failed");
       setState("error");
     }
   };
 
+  const errorMessage = errorKind === "validation"
+    ? text.validation
+    : errorKind === "rate_limited"
+      ? text.rateLimited
+      : text.sendFailed;
+
   return (
-    <form className="contact-form" onSubmit={submit} noValidate={false}>
-      <label><span>{text.name}</span><input name="name" autoComplete="name" maxLength={120} required /></label>
-      <label><span>{text.email}</span><input name="email" type="email" autoComplete="email" maxLength={254} required /></label>
+    <form className="contact-form commercial-contact-form" onSubmit={submit}>
+      <div className="contact-form-grid">
+        <label><span>{text.name}</span><input name="name" autoComplete="name" maxLength={120} required /></label>
+        <label><span>{text.company}</span><input name="companyName" autoComplete="organization" maxLength={180} required /></label>
+        <label><span>{text.email}</span><input name="email" type="email" autoComplete="email" maxLength={254} required /></label>
+        <label><span>{text.telephone}</span><input name="telephone" type="tel" autoComplete="tel" maxLength={50} /></label>
+        <label>
+          <span>{text.enquiryType}</span>
+          <select name="enquiryType" required defaultValue="">
+            <option value="" disabled>{text.choose}</option>
+            <option value="manufacturer">{text.manufacturer}</option>
+            <option value="buyer">{text.buyer}</option>
+            <option value="other">{text.other}</option>
+          </select>
+        </label>
+        <label>
+          <span>{text.interest}</span>
+          <input name="productInterest" maxLength={300} placeholder={text.interestPlaceholder} required />
+        </label>
+      </div>
+
       <label><span>{text.message}</span><textarea name="message" rows={7} maxLength={5000} required /></label>
 
       <div className="contact-honeypot" aria-hidden="true">
-        <label>Company<input name="company" tabIndex={-1} autoComplete="off" /></label>
+        <label>Website<input name="website" tabIndex={-1} autoComplete="off" /></label>
       </div>
 
       <label className="contact-consent">
@@ -80,17 +147,17 @@ export default function ContactForm({ locale }: { locale: Locale }) {
         <span>{text.consentPrefix} <Link href={privacyHref}>{text.privacy}</Link>.</span>
       </label>
 
-      <button type="submit" className="button button-dark" disabled={state === "loading"}>
+      <button type="submit" className="button button-primary" disabled={state === "loading"}>
         {state === "loading" ? text.sending : text.button}
       </button>
 
-      {state === "success" && (
+      {state === "success" ? (
         <div className="form-status form-success" role="status">
           <strong>{text.successTitle}</strong>
           <p>{text.successBody}</p>
         </div>
-      )}
-      {state === "error" && <p className="form-note form-error" role="alert">{text.error}</p>}
+      ) : null}
+      {state === "error" ? <p className="form-note form-error" role="alert">{errorMessage}</p> : null}
     </form>
   );
 }

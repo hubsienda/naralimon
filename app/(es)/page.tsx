@@ -3,8 +3,8 @@ import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata({
   locale: "es",
-  title: "Naralimon | Todo puede ser un juego",
-  description: "Naralimon convierte objetos, ideas y experiencias en juegos. Nacido en la Costa del Sol.",
+  title: "Naralimon | Intermediación alimentaria y representación comercial",
+  description: "Agencia comercial independiente en Málaga para representación de fabricantes, intermediación alimentaria B2B y aprovisionamiento internacional.",
   path: "/",
   alternatePath: "/en",
 });

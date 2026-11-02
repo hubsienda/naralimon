@@ -6,6 +6,7 @@ export const runtime = "nodejs";
 const WINDOW_MS = 10 * 60 * 1000;
 const MAX_REQUESTS = 5;
 const attempts = new Map<string, number[]>();
+const enquiryTypes = new Set(["manufacturer", "buyer", "other"]);
 
 function getClientIp(request: NextRequest): string {
   return request.headers.get("x-forwarded-for")?.split(",")[0]?.trim()
@@ -43,6 +44,13 @@ function escapeHtml(value: string): string {
   }[character] ?? character));
 }
 
+function enquiryLabel(value: string, locale: "es" | "en"): string {
+  const labels = locale === "es"
+    ? { manufacturer: "Fabricante / productor", buyer: "Comprador profesional", other: "Otra consulta comercial" }
+    : { manufacturer: "Manufacturer / producer", buyer: "Professional buyer", other: "Other commercial enquiry" };
+  return labels[value as keyof typeof labels] ?? value;
+}
+
 export async function POST(request: NextRequest) {
   const ip = getClientIp(request);
   if (isRateLimited(ip)) {
@@ -56,54 +64,67 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ ok: false, error: "invalid_request" }, { status: 400 });
   }
 
-  // Honeypot: bots often fill fields hidden from human visitors. Return success without sending.
-  if (clean(body.company, 200)) {
+  // Honeypot: bots commonly fill fields hidden from human visitors.
+  if (clean(body.website, 200)) {
     return NextResponse.json({ ok: true });
   }
 
   const name = clean(body.name, 120);
+  const companyName = clean(body.companyName, 180);
   const email = clean(body.email, 254);
+  const telephone = clean(body.telephone, 50);
+  const enquiryType = clean(body.enquiryType, 30);
+  const productInterest = clean(body.productInterest, 300);
   const message = clean(body.message, 5000);
-  const locale = body.locale === "en" ? "en" : "es";
+  const locale: "es" | "en" = body.locale === "en" ? "en" : "es";
   const privacyAccepted = body.privacyAccepted === true;
 
-  if (!name || !validEmail(email) || !message || !privacyAccepted) {
+  if (!name || !companyName || !validEmail(email) || !enquiryTypes.has(enquiryType) || !productInterest || !message || !privacyAccepted) {
     return NextResponse.json({ ok: false, error: "validation" }, { status: 400 });
   }
 
   const sentAt = new Date().toISOString();
+  const typeLabel = enquiryLabel(enquiryType, locale);
   const text = [
-    `Name: ${name}`,
-    `Email: ${email}`,
+    "Name: " + name,
+    "Company: " + companyName,
+    "Email: " + email,
+    "Telephone: " + (telephone || "Not provided"),
+    "Enquiry type: " + typeLabel,
+    "Product / commercial interest: " + productInterest,
     "",
     "Message:",
     message,
     "",
-    `Language: ${locale}`,
-    `Date/time: ${sentAt}`,
-  ].join("\n");
+    "Language: " + locale,
+    "Date/time: " + sentAt,
+  ].join("\\n");
 
-  const html = `
-    <p><strong>Name:</strong> ${escapeHtml(name)}</p>
-    <p><strong>Email:</strong> ${escapeHtml(email)}</p>
-    <p><strong>Message:</strong><br>${escapeHtml(message).replace(/\n/g, "<br>")}</p>
-    <p><strong>Language:</strong> ${locale}</p>
-    <p><strong>Date/time:</strong> ${sentAt}</p>
-  `;
+  const html = [
+    "<p><strong>Name:</strong> " + escapeHtml(name) + "</p>",
+    "<p><strong>Company:</strong> " + escapeHtml(companyName) + "</p>",
+    "<p><strong>Email:</strong> " + escapeHtml(email) + "</p>",
+    "<p><strong>Telephone:</strong> " + escapeHtml(telephone || "Not provided") + "</p>",
+    "<p><strong>Enquiry type:</strong> " + escapeHtml(typeLabel) + "</p>",
+    "<p><strong>Product / commercial interest:</strong> " + escapeHtml(productInterest) + "</p>",
+    "<p><strong>Message:</strong><br>" + escapeHtml(message).replace(/\\n/g, "<br>") + "</p>",
+    "<p><strong>Language:</strong> " + locale + "</p>",
+    "<p><strong>Date/time:</strong> " + sentAt + "</p>",
+  ].join("");
 
   try {
     const { transporter, from } = createMailTransport();
     await transporter.sendMail({
-      from: `Naralimon website <${from}>`,
+      from: "Naralimon website <" + from + ">",
       to: CONTACT_RECIPIENT,
       replyTo: email,
-      subject: `Naralimon contact — ${name}`,
+      subject: "Naralimon commercial enquiry — " + companyName + " — " + typeLabel,
       text,
       html,
     });
     return NextResponse.json({ ok: true });
   } catch (error) {
-    console.error("Naralimon contact email failed", error);
+    console.error("Naralimon commercial enquiry email failed", error);
     return NextResponse.json({ ok: false, error: "send_failed" }, { status: 500 });
   }
 }

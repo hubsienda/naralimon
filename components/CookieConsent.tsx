@@ -4,12 +4,11 @@ import Link from "next/link";
 import Script from "next/script";
 import { useEffect, useRef, useState } from "react";
 import { siteConfig } from "@/lib/config";
-import { getCopy } from "@/lib/i18n";
+import { getCommercialCopy } from "@/lib/commercial-content";
 import type { Locale } from "@/lib/types";
 
 type ConsentPreferences = {
   analytics: boolean;
-  marketing: boolean;
   updatedAt: string;
 };
 
@@ -19,9 +18,9 @@ function readConsent(): ConsentPreferences | null {
   try {
     const raw = window.localStorage.getItem(STORAGE_KEY);
     if (!raw) return null;
-    const value = JSON.parse(raw) as Partial<ConsentPreferences>;
-    if (typeof value.analytics !== "boolean" || typeof value.marketing !== "boolean") return null;
-    return { analytics: value.analytics, marketing: value.marketing, updatedAt: String(value.updatedAt ?? "") };
+    const value = JSON.parse(raw) as { analytics?: unknown; updatedAt?: unknown };
+    if (typeof value.analytics !== "boolean") return null;
+    return { analytics: value.analytics, updatedAt: String(value.updatedAt ?? "") };
   } catch {
     return null;
   }
@@ -76,11 +75,10 @@ function AnalyticsLoader({ enabled }: { enabled: boolean }) {
 }
 
 export default function CookieConsent({ locale }: { locale: Locale }) {
-  const c = getCopy(locale).consent;
+  const c = getCommercialCopy(locale).consent;
   const [consent, setConsent] = useState<ConsentPreferences | null | undefined>(undefined);
   const [preferencesOpen, setPreferencesOpen] = useState(false);
   const [analytics, setAnalytics] = useState(false);
-  const [marketing, setMarketing] = useState(false);
   const dialogRef = useRef<HTMLDivElement>(null);
   const previousFocus = useRef<HTMLElement | null>(null);
   const cookieHref = locale === "es" ? "/cookies" : "/en/cookies";
@@ -99,7 +97,6 @@ export default function CookieConsent({ locale }: { locale: Locale }) {
       const current = readConsent();
       previousFocus.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
       setAnalytics(current?.analytics ?? false);
-      setMarketing(current?.marketing ?? false);
       setPreferencesOpen(true);
     };
     window.addEventListener("naralimon:open-consent", open);
@@ -126,24 +123,21 @@ export default function CookieConsent({ locale }: { locale: Locale }) {
     return () => document.removeEventListener("keydown", onKeyDown);
   }, [preferencesOpen]);
 
-  const persist = (next: Omit<ConsentPreferences, "updatedAt">) => {
-    const value: ConsentPreferences = { ...next, updatedAt: new Date().toISOString() };
+  const persist = (analyticsEnabled: boolean) => {
+    const value: ConsentPreferences = { analytics: analyticsEnabled, updatedAt: new Date().toISOString() };
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(value));
     setConsent(value);
-    window.dispatchEvent(new CustomEvent("naralimon:consent-changed", { detail: value }));
   };
 
-  const acceptAll = () => persist({ analytics: true, marketing: true });
-  const rejectNonEssential = () => persist({ analytics: false, marketing: false });
   const openPreferences = () => {
     const current = consent ?? readConsent();
     previousFocus.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
     setAnalytics(current?.analytics ?? false);
-    setMarketing(current?.marketing ?? false);
     setPreferencesOpen(true);
   };
+
   const savePreferences = () => {
-    persist({ analytics, marketing });
+    persist(analytics);
     closePreferences();
   };
 
@@ -153,10 +147,13 @@ export default function CookieConsent({ locale }: { locale: Locale }) {
 
       {consent === null ? (
         <aside className="consent-banner" aria-label={c.bannerTitle}>
-          <div className="consent-copy"><strong>{c.bannerTitle}</strong><p>{c.bannerBody} <Link href={cookieHref}>{locale === "es" ? "Política de cookies" : "Cookie policy"}</Link>.</p></div>
+          <div className="consent-copy">
+            <strong>{c.bannerTitle}</strong>
+            <p>{c.bannerBody} <Link href={cookieHref}>{locale === "es" ? "Política de cookies" : "Cookie policy"}</Link>.</p>
+          </div>
           <div className="consent-actions">
-            <button type="button" className="button button-dark" onClick={acceptAll}>{c.acceptAll}</button>
-            <button type="button" className="button button-light" onClick={rejectNonEssential}>{c.reject}</button>
+            <button type="button" className="button button-primary" onClick={() => persist(true)}>{c.acceptAll}</button>
+            <button type="button" className="button button-secondary" onClick={() => persist(false)}>{c.reject}</button>
             <button type="button" className="text-button" onClick={openPreferences}>{c.preferences}</button>
           </div>
         </aside>
@@ -177,12 +174,8 @@ export default function CookieConsent({ locale }: { locale: Locale }) {
               <div><strong>{c.analytics}</strong><p>{c.analyticsHelp}</p></div>
               <input type="checkbox" checked={analytics} onChange={(event) => setAnalytics(event.target.checked)} />
             </label>
-            <label className="consent-option">
-              <div><strong>{c.marketing}</strong><p>{c.marketingHelp}</p></div>
-              <input type="checkbox" checked={marketing} onChange={(event) => setMarketing(event.target.checked)} />
-            </label>
             <div className="consent-dialog-actions">
-              <button type="button" className="button button-dark" onClick={savePreferences}>{c.save}</button>
+              <button type="button" className="button button-primary" onClick={savePreferences}>{c.save}</button>
               <button type="button" className="text-button" onClick={closePreferences}>{c.close}</button>
             </div>
           </div>

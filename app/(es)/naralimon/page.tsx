@@ -1,25 +1,5 @@
-import InstagramIcon from "@/components/InstagramIcon";
-import SimplePage from "@/components/SimplePage";
-import SiteLink from "@/components/SiteLink";
-import { siteConfig } from "@/lib/config";
-import { pageMetadata } from "@/lib/metadata";
+import { permanentRedirect } from "next/navigation";
 
-export const metadata = pageMetadata({
-  locale: "es",
-  title: "Naralimon | Qué es",
-  description: "Naralimon nació en la Costa del Sol con una idea sencilla: todo puede ser un juego.",
-  path: "/naralimon",
-  alternatePath: "/en/naralimon",
-});
-
-export default function NaralimonPage() {
-  return (
-    <SimplePage eyebrow="COSTA DEL SOL" title="NARALIMON">
-      <p className="large-copy">Naralimon nació en la Costa del Sol con una idea sencilla:</p>
-      <p className="statement-line">todo puede ser un juego.</p>
-      <p>Creamos juegos, objetos e ideas que convierten lo cotidiano en algo más divertido.</p>
-      <p>Y esto acaba de empezar.</p>
-      <SiteLink className="button button-dark instagram-cta" href={siteConfig.socials.instagram}><InstagramIcon /> SIGUE A NARALIMON</SiteLink>
-    </SimplePage>
-  );
+export default function LegacyAboutRedirect() {
+  permanentRedirect("/nosotros");
 }
