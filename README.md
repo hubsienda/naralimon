@@ -1,8 +1,17 @@
 # Naralimon
 
-`naralimon.com` is built with Next.js, TypeScript, App Router, Tailwind CSS and Nextra/MDX as a lightweight file-based publishing layer.
+`naralimon.com` is the bilingual corporate website of **Naralimon S.C.**, an independent commercial agency based in Mijas Costa, Málaga, Spain.
 
-Spanish is the default language. English lives under `/en`.
+The site presents Naralimon's food brokerage, commercial representation and international sourcing activity. Spanish is the primary language; English lives under `/en`.
+
+## Technology
+
+- Next.js App Router
+- TypeScript
+- Tailwind/PostCSS
+- Nextra/MDX retained only for the unlisted legacy story archive
+- Nodemailer for server-side contact delivery
+- Vercel deployment
 
 ## Local development
 
@@ -11,7 +20,7 @@ npm install
 npm run dev
 ```
 
-Before a production build, the project validates bilingual content and regenerates the article translation map automatically.
+Validation:
 
 ```bash
 npm run content:check
@@ -19,44 +28,47 @@ npm run typecheck
 npm run build
 ```
 
-## Stories / Historias
+## Commercial routes
 
-Editorial content is file-based:
+Spanish:
 
 ```text
-content/
-  es/
-    historias/
-  en/
-    stories/
+/
+/representacion-comercial
+/intermediacion-alimentaria
+/aprovisionamiento
+/nosotros
+/contacto
 ```
 
-Each Spanish/English pair shares the same `translationKey`. Minimum frontmatter:
+English:
 
-```yaml
-title:
-description:
-date:
-translationKey:
-slug:
-image:
-category:
-published:
+```text
+/en
+/en/sales-representation
+/en/food-brokerage
+/en/sourcing
+/en/about
+/en/contact
 ```
 
-A draft may temporarily lack its translation, but a `published: true` item cannot build unless both Spanish and English versions exist and are both published. Published items automatically appear in `/historias`, `/en/stories`, the homepage Stories teaser and the sitemap.
+Legal routes remain at `/privacidad`, `/cookies`, `/aviso-legal` and their English equivalents.
 
-`mdx-components.tsx` is the central place for Naralimon-specific MDX components. The current set includes `Challenge`, `Quote`, `Image` and `CTA` and can be extended without introducing a Nextra documentation theme.
+Legacy `/naralimon` and `/en/naralimon` routes redirect to the new About pages. The old Historias/Stories content remains available as an unlisted, noindex archive and is intentionally omitted from the commercial sitemap.
 
 ## Contact form
 
-The contact form posts to `/api/contact` and sends mail server-side to:
+The commercial enquiry form posts to `/api/contact` and sends mail server-side to:
 
 ```text
 naralimongroup@naralimon.com
 ```
 
-No contact database is created. The visitor's email is set as `Reply-To`; the authenticated Naralimon mailbox remains the sender.
+Fields include name, company, email, optional telephone, enquiry type, product/commercial interest, message and mandatory privacy acceptance.
+
+The visible company field is `companyName`. The hidden anti-spam honeypot is `website`.
+
+No contact database is created. The visitor's email is set as `Reply-To`; the authenticated Naralimon mailbox remains the sender. Delivery failures return an error rather than a fake success response.
 
 Server-only Vercel environment variables:
 
@@ -69,49 +81,39 @@ SMTP_SECURE=true
 SMTP_FROM=
 ```
 
-For the current Google Workspace mailbox, `SMTP_USER` should be the authenticated Workspace account and `SMTP_PASS` its SMTP/app credential. `SMTP_HOST`, `SMTP_PORT`, `SMTP_SECURE` and `SMTP_FROM` are optional because sensible Google Workspace defaults are built in.
+## Analytics and consent
 
-The endpoint validates fields, requires explicit privacy acceptance, includes a honeypot and applies a lightweight in-memory/IP rate limit. Credentials are never exposed client-side.
-
-## Newsletter / Mailrelay
-
-The hosted Mailrelay form is fixed centrally to:
+Public configuration:
 
 ```text
-https://naralimon.ipzmarketing.com/f/YjqIO4P0LoY
-```
-
-Subscribers are handled by the existing Mailrelay configuration/group (`Naralimones`). Naralimon does not create a proprietary mailing database or reproduce Mailrelay's signup logic.
-
-Because the form is an external iframe/script, it loads only after **Marketing / third parties** consent. The Mailrelay script is loaded only in the newsletter component, not globally.
-
-## Public configuration
-
-Environment variables used by the public site:
-
-```text
-NEXT_PUBLIC_FACEBOOK_URL=
 NEXT_PUBLIC_GA_ID=
 ```
 
-- Instagram is fixed centrally to `https://www.instagram.com/naralimonoficial`.
-- The contact address is fixed centrally to `naralimongroup@naralimon.com`.
-- `NEXT_PUBLIC_FACEBOOK_URL` is optional; no Facebook link is shown unless it is supplied.
-- `NEXT_PUBLIC_GA_ID` enables Google Analytics **only after Analytics consent**. With no ID, no GA script loads.
-- Legal identity, address, tax ID, contact email and supervisory authority are fixed centrally in `lib/config.ts`.
+Google Analytics loads only after Analytics consent. If no measurement ID is supplied, no GA script loads.
 
-## Consent
+Consent preferences are stored in first-party browser local storage under `naralimon-consent-v1`. Necessary storage remains active; Analytics is optional. The footer's **GESTIONAR COOKIES / MANAGE COOKIES** control reopens preferences.
 
-Consent is stored in first-party browser local storage under `naralimon-consent-v1`. Necessary storage is always enabled. Analytics and Marketing/third-party categories are optional.
+The previous gaming newsletter/Mailrelay integration is not part of the commercial website.
 
-Marketing/third-party consent currently controls the Mailrelay hosted form. Analytics consent controls Google Analytics when a measurement ID is configured.
+## Related Naralimon properties
 
-The footer's **GESTIONAR COOKIES / MANAGE COOKIES** action reopens preferences at any time.
+The commercial website remains separate from:
 
-## KLANZ
+- Naralimon Originals / online games: `https://www.naralimon.es`
+- KLANZ: `https://klanz.naralimon.com`
 
-KLANZ links to `https://klanz.naralimon.com` through the central `klanzUrl` value in `lib/config.ts`.
+These properties are linked discreetly from the commercial footer and are not part of the main navigation.
 
-## Launch note
+## Legal identity
 
-The legal pages are structured around the implemented website services, but exact company/controller/address details remain intentionally configurable. Supply the final legal values before the production-domain cutover.
+The verified company details are fixed centrally in `lib/config.ts`:
+
+```text
+Naralimon S.C.
+Calle Tamarindos 7
+Mijas Costa
+29651 (Málaga)
+España
+CIF ES J01837269
+naralimongroup@naralimon.com
+```
