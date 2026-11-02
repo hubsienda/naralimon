@@ -7,12 +7,15 @@ import type { Locale } from "@/lib/types";
 
 const esToEn: Record<string, string> = {
   "/": "/en",
-  "/historias": "/en/stories",
-  "/naralimon": "/en/naralimon",
+  "/representacion-comercial": "/en/sales-representation",
+  "/intermediacion-alimentaria": "/en/food-brokerage",
+  "/aprovisionamiento": "/en/sourcing",
+  "/nosotros": "/en/about",
   "/contacto": "/en/contact",
   "/privacidad": "/en/privacy",
   "/cookies": "/en/cookies",
   "/aviso-legal": "/en/legal",
+  "/historias": "/en/stories",
 };
 
 const enToEs = Object.fromEntries(Object.entries(esToEn).map(([es, en]) => [en, es])) as Record<string, string>;
