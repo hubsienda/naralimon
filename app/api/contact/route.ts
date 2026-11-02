@@ -31,7 +31,7 @@ function clean(value: unknown, maxLength: number): string {
 }
 
 function validEmail(value: string): boolean {
-  return /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(value) && value.length <= 254;
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) && value.length <= 254;
 }
 
 function escapeHtml(value: string): string {
