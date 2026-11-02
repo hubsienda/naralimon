@@ -1,32 +1,38 @@
-import Image from "next/image";
-import { siteConfig } from "@/lib/config";
-import { getCopy } from "@/lib/i18n";
+import Link from "next/link";
+import { getCommercialCopy } from "@/lib/commercial-content";
 import type { Locale } from "@/lib/types";
-import SiteLink from "./SiteLink";
 
 export default function Hero({ locale }: { locale: Locale }) {
-  const c = getCopy(locale).hero;
-  const gamesUrl = `${siteConfig.gamesBaseUrl}/${locale}`;
+  const c = getCommercialCopy(locale).hero;
+  const manufacturerHref = locale === "es" ? "/representacion-comercial" : "/en/sales-representation";
+  const sourcingHref = locale === "es" ? "/aprovisionamiento" : "/en/sourcing";
+
   return (
-    <section className="hero section-pad">
-      <div className="hero-orbit orbit-one" aria-hidden="true" />
-      <div className="hero-orbit orbit-two" aria-hidden="true" />
-      <div className="shell hero-grid">
-        <div className="hero-copy">
-          <p className="eyebrow">{c.eyebrow}</p>
+    <section className="commercial-hero">
+      <div className="shell commercial-hero-grid">
+        <div className="commercial-hero-copy">
+          <p className="commercial-kicker">{c.eyebrow}</p>
           <h1>{c.title}</h1>
-          <p className="hero-body">{c.body}</p>
-          <div className="hero-actions">
-            <SiteLink href={gamesUrl} className="button button-dark">{c.primary}</SiteLink>
-            <SiteLink href={siteConfig.socials.instagram} className="button button-light">{c.secondary}</SiteLink>
+          <p className="commercial-hero-lead">{c.lead}</p>
+          <p className="commercial-hero-body">{c.body}</p>
+          <p className="commercial-hero-sub">{c.sub}</p>
+          <div className="commercial-actions">
+            <Link className="button button-primary" href={manufacturerHref}>{c.manufacturer}</Link>
+            <Link className="button button-secondary" href={sourcingHref}>{c.buyer}</Link>
           </div>
         </div>
-        <div className="hero-art" aria-label={c.spark}>
-          <div className="logo-stage"><Image src="/logo/logo.png" alt="Naralimon" fill sizes="(max-width: 768px) 80vw, 480px" priority className="object-contain" /></div>
-          <div className="spark-card"><span className="spark-dot" aria-hidden="true" /><p>{c.spark}</p></div>
-          <div className="hero-chip chip-orange" aria-hidden="true">?</div>
-          <div className="hero-chip chip-lemon" aria-hidden="true">!</div>
-        </div>
+        <aside className="commercial-hero-panel" aria-label={locale === "es" ? "Áreas de actividad" : "Areas of activity"}>
+          <div className="commercial-hero-brand">NARALIMON</div>
+          <div className="commercial-hero-rule" />
+          <p>{locale === "es" ? "Intermediación Alimentaria y Representación Comercial" : "Food Brokerage & Commercial Representation"}</p>
+          <ul>
+            <li>{locale === "es" ? "Representación de fabricantes y productores" : "Representation of manufacturers and producers"}</li>
+            <li>{locale === "es" ? "Intermediación B2B" : "B2B brokerage"}</li>
+            <li>{locale === "es" ? "Aprovisionamiento internacional" : "International sourcing"}</li>
+            <li>{locale === "es" ? "Desarrollo de mercados y canales" : "Market and channel development"}</li>
+          </ul>
+          <span>{locale === "es" ? "Mijas Costa · Málaga · España" : "Mijas Costa · Málaga · Spain"}</span>
+        </aside>
       </div>
     </section>
   );
