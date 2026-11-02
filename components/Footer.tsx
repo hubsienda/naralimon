@@ -28,7 +28,7 @@ export default function Footer({ locale }: { locale: Locale }) {
         <div className="commercial-footer-links">
           <div>
             <strong>{c.projects}</strong>
-            <SiteLink href={siteConfig.gamesBaseUrl}>{c.originals} ↗</SiteLink>
+            <SiteLink href={`${siteConfig.gamesBaseUrl}/${locale}`}>{c.originals} ↗</SiteLink>
             <SiteLink href={siteConfig.klanzUrl}>{c.klanz} ↗</SiteLink>
           </div>
           <div>
