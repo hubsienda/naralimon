@@ -1,39 +1,27 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/config";
-import { getPublishedStories, getStoryTranslation, storyPath } from "@/lib/content/stories";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const pairs = [
-    ["/", "/en"],
-    ["/historias", "/en/stories"],
-    ["/naralimon", "/en/naralimon"],
-    ["/contacto", "/en/contact"],
-    ["/privacidad", "/en/privacy"],
-    ["/cookies", "/en/cookies"],
-    ["/aviso-legal", "/en/legal"],
+    ["/", "/en", 1],
+    ["/representacion-comercial", "/en/sales-representation", 0.9],
+    ["/intermediacion-alimentaria", "/en/food-brokerage", 0.9],
+    ["/aprovisionamiento", "/en/sourcing", 0.9],
+    ["/nosotros", "/en/about", 0.7],
+    ["/contacto", "/en/contact", 0.8],
+    ["/privacidad", "/en/privacy", 0.4],
+    ["/cookies", "/en/cookies", 0.4],
+    ["/aviso-legal", "/en/legal", 0.4],
   ] as const;
 
-  const staticEntries = pairs.flatMap(([esPath, enPath]) => {
+  return pairs.flatMap(([esPath, enPath, priority]) => {
     const esUrl = `${siteConfig.baseUrl}${esPath}`;
     const enUrl = `${siteConfig.baseUrl}${enPath}`;
     const alternates = { languages: { es: esUrl, en: enUrl, "x-default": esUrl } };
+
     return [
-      { url: esUrl, changeFrequency: "weekly" as const, priority: esPath === "/" ? 1 : 0.7, alternates },
-      { url: enUrl, changeFrequency: "weekly" as const, priority: enPath === "/en" ? 0.9 : 0.7, alternates },
+      { url: esUrl, changeFrequency: "monthly" as const, priority, alternates },
+      { url: enUrl, changeFrequency: "monthly" as const, priority: Math.max(priority - 0.05, 0.35), alternates },
     ];
   });
-
-  const storyEntries = getPublishedStories("es").flatMap((story) => {
-    const translation = getStoryTranslation(story);
-    if (!translation) return [];
-    const esUrl = `${siteConfig.baseUrl}${storyPath(story)}`;
-    const enUrl = `${siteConfig.baseUrl}${storyPath(translation)}`;
-    const alternates = { languages: { es: esUrl, en: enUrl, "x-default": esUrl } };
-    return [
-      { url: esUrl, lastModified: story.date, changeFrequency: "monthly" as const, priority: 0.65, alternates },
-      { url: enUrl, lastModified: translation.date, changeFrequency: "monthly" as const, priority: 0.65, alternates },
-    ];
-  });
-
-  return [...staticEntries, ...storyEntries];
 }
