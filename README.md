@@ -1,76 +1,65 @@
 # Naralimon
 
-`naralimon.com` is the bilingual corporate website of **Naralimon S.C.**, an independent commercial agency based in Mijas Costa, Málaga, Spain.
+`naralimon.com` is the bilingual corporate website of **Naralimon S.C.**, an independent B2B commercial brokerage and market-development agency based in Mijas Costa, Málaga, Spain.
 
-The site presents Naralimon's food brokerage, commercial representation and international sourcing activity. Spanish is the primary language; English lives under `/en`.
+Spanish is the primary language. English lives under `/en`.
 
-## Technology
+## Public website
 
-- Next.js App Router
-- TypeScript
-- Tailwind/PostCSS
-- Nextra/MDX retained only for the unlisted legacy story archive
-- Nodemailer for server-side contact delivery
-- Vercel deployment
-
-## Local development
-
-```bash
-npm install
-npm run dev
-```
-
-Validation:
-
-```bash
-npm run content:check
-npm run typecheck
-npm run build
-```
-
-## Commercial routes
+Only these business pages are intentionally public:
 
 Spanish:
-
-```text
-/
-/representacion-comercial
-/intermediacion-alimentaria
-/aprovisionamiento
-/nosotros
-/contacto
-```
+- `/`
+- `/nosotros`
+- `/contacto`
 
 English:
+- `/en`
+- `/en/about`
+- `/en/contact`
 
-```text
-/en
-/en/sales-representation
-/en/food-brokerage
-/en/sourcing
-/en/about
-/en/contact
-```
+Privacy, Cookies and Legal Notice remain public through the footer.
 
-Legal routes remain at `/privacidad`, `/cookies`, `/aviso-legal` and their English equivalents.
+## Reversible inactive-route gate
 
-Legacy `/naralimon` and `/en/naralimon` routes redirect to the new About pages. The old Historias/Stories content remains available as an unlisted, noindex archive and is intentionally omitted from the commercial sitemap.
+The repository still contains the previously developed commercial-representation, food-brokerage, sourcing, Stories/Historias and KLANZ routes and their content.
+
+They are intentionally hidden from public display by `middleware.ts`, which returns HTTP 404 plus `X-Robots-Tag: noindex, nofollow, noarchive` for the inactive route prefixes.
+
+The hidden routes are also omitted from navigation and `app/sitemap.ts`.
+
+To reactivate a section:
+1. remove the corresponding prefix from `middleware.ts`;
+2. restore its navigation and sitemap entry if it should be promoted publicly;
+3. keep the existing page/component/content implementation.
+
+No inactive page source is deleted by this simplification.
+
+## Archived homepage
+
+The commercial homepage that existed immediately before the 3 November 2026 simplification is preserved in:
+
+`archive/2026-11-03-commercial-homepage/`
+
+The archive contains the previous HomePage, Hero and full commercial-content module from main `0fca87962e3fe403e322de649fbd539f45aede6f`.
+
+The current short public positioning is stored separately in `lib/public-content.ts`.
 
 ## Contact form
 
-The commercial enquiry form posts to `/api/contact` and sends mail server-side to:
+The business enquiry form posts to `/api/contact` and sends mail server-side to:
 
-```text
-naralimongroup@naralimon.com
-```
+`naralimongroup@naralimon.com`
+
+It uses the existing Nodemailer SMTP implementation and does not require a database or a third-party transactional email platform.
 
 Fields include name, company, email, optional telephone, enquiry type, product/commercial interest, message and mandatory privacy acceptance.
 
 The visible company field is `companyName`. The hidden anti-spam honeypot is `website`.
 
-No contact database is created. The visitor's email is set as `Reply-To`; the authenticated Naralimon mailbox remains the sender. Delivery failures return an error rather than a fake success response.
+The visitor's email is used as `Reply-To`; the authenticated Naralimon mailbox remains the sender. A success response is returned only after `transporter.sendMail()` resolves successfully. Delivery failures return an error.
 
-Server-only Vercel environment variables:
+Server-only deployment variables:
 
 ```text
 SMTP_USER=
@@ -81,32 +70,24 @@ SMTP_SECURE=true
 SMTP_FROM=
 ```
 
-## Analytics and consent
+`SMTP_HOST`, `SMTP_PORT`, `SMTP_SECURE` and `SMTP_FROM` have defaults; `SMTP_USER` and `SMTP_PASS` are required at runtime.
 
-Public configuration:
+## Validation
 
-```text
-NEXT_PUBLIC_GA_ID=
+```bash
+npm install
+npm run content:check
+npm run typecheck
+npm run build
 ```
 
-Google Analytics loads only after Analytics consent. If no measurement ID is supplied, no GA script loads.
+## Analytics and consent
 
-Consent preferences are stored in first-party browser local storage under `naralimon-consent-v1`. Necessary storage remains active; Analytics is optional. The footer's **GESTIONAR COOKIES / MANAGE COOKIES** control reopens preferences.
+Google Analytics loads only after Analytics consent and only when `NEXT_PUBLIC_GA_ID` is configured.
 
-The previous gaming newsletter and third-party signup integration are not part of the commercial website.
-
-## Related Naralimon properties
-
-The commercial website remains separate from:
-
-- Naralimon Originals / online games: `https://www.naralimon.es`
-- KLANZ: `https://klanz.naralimon.com`
-
-These properties are linked discreetly from the commercial footer and are not part of the main navigation.
+Consent preferences are stored in first-party browser local storage under `naralimon-consent-v1`. The footer's **GESTIONAR COOKIES / MANAGE COOKIES** control reopens preferences.
 
 ## Legal identity
-
-The verified company details are fixed centrally in `lib/config.ts`:
 
 ```text
 Naralimon S.C.
