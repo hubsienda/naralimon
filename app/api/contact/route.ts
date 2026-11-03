@@ -98,7 +98,7 @@ export async function POST(request: NextRequest) {
     "",
     "Language: " + locale,
     "Date/time: " + sentAt,
-  ].join("\\n");
+  ].join("\n");
 
   const html = [
     "<p><strong>Name:</strong> " + escapeHtml(name) + "</p>",
@@ -107,7 +107,7 @@ export async function POST(request: NextRequest) {
     "<p><strong>Telephone:</strong> " + escapeHtml(telephone || "Not provided") + "</p>",
     "<p><strong>Enquiry type:</strong> " + escapeHtml(typeLabel) + "</p>",
     "<p><strong>Product / commercial interest:</strong> " + escapeHtml(productInterest) + "</p>",
-    "<p><strong>Message:</strong><br>" + escapeHtml(message).replace(/\\n/g, "<br>") + "</p>",
+    "<p><strong>Message:</strong><br>" + escapeHtml(message).replace(/\n/g, "<br>") + "</p>",
     "<p><strong>Language:</strong> " + locale + "</p>",
     "<p><strong>Date/time:</strong> " + sentAt + "</p>",
   ].join("");
