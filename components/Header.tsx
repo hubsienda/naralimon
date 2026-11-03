@@ -3,31 +3,17 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { getCommercialCopy } from "@/lib/commercial-content";
+import { getPublicCopy } from "@/lib/public-content";
 import type { Locale } from "@/lib/types";
 import LanguageSwitcher from "./LanguageSwitcher";
 
 export default function Header({ locale }: { locale: Locale }) {
   const [open, setOpen] = useState(false);
-  const c = getCommercialCopy(locale).nav;
+  const c = getPublicCopy(locale).nav;
   const home = locale === "es" ? "/" : "/en";
   const links = locale === "es"
-    ? [
-        [c.home, "/"],
-        [c.representation, "/representacion-comercial"],
-        [c.brokerage, "/intermediacion-alimentaria"],
-        [c.sourcing, "/aprovisionamiento"],
-        [c.about, "/nosotros"],
-        [c.contact, "/contacto"],
-      ]
-    : [
-        [c.home, "/en"],
-        [c.representation, "/en/sales-representation"],
-        [c.brokerage, "/en/food-brokerage"],
-        [c.sourcing, "/en/sourcing"],
-        [c.about, "/en/about"],
-        [c.contact, "/en/contact"],
-      ];
+    ? [[c.home, "/"], [c.about, "/nosotros"], [c.contact, "/contacto"]]
+    : [[c.home, "/en"], [c.about, "/en/about"], [c.contact, "/en/contact"]];
 
   return (
     <header className="site-header commercial-header">

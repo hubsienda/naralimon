@@ -1,14 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
-import { siteConfig } from "@/lib/config";
-import { getCommercialCopy } from "@/lib/commercial-content";
+import { getPublicCopy } from "@/lib/public-content";
 import type { Locale } from "@/lib/types";
 import BackToTopButton from "./BackToTopButton";
 import CookieSettingsButton from "./CookieSettingsButton";
-import SiteLink from "./SiteLink";
 
 export default function Footer({ locale }: { locale: Locale }) {
-  const c = getCommercialCopy(locale).footer;
+  const c = getPublicCopy(locale).footer;
   const currentYear = new Date().getFullYear();
   const legal = locale === "es"
     ? [[c.privacy, "/privacidad"], [c.cookies, "/cookies"], [c.legal, "/aviso-legal"]]
@@ -26,11 +24,6 @@ export default function Footer({ locale }: { locale: Locale }) {
         </div>
 
         <div className="commercial-footer-links">
-          <div>
-            <strong>{c.projects}</strong>
-            <SiteLink href={`${siteConfig.gamesBaseUrl}/${locale}`}>{c.originals} ↗</SiteLink>
-            <SiteLink href={siteConfig.klanzUrl}>{c.klanz} ↗</SiteLink>
-          </div>
           <div>
             <strong>NARALIMON</strong>
             {legal.map(([label, href]) => <Link key={href} href={href}>{label}</Link>)}

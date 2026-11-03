@@ -4,10 +4,7 @@ import { siteConfig } from "@/lib/config";
 export default function sitemap(): MetadataRoute.Sitemap {
   const pairs = [
     ["/", "/en", 1],
-    ["/representacion-comercial", "/en/sales-representation", 0.9],
-    ["/intermediacion-alimentaria", "/en/food-brokerage", 0.9],
-    ["/aprovisionamiento", "/en/sourcing", 0.9],
-    ["/nosotros", "/en/about", 0.7],
+    ["/nosotros", "/en/about", 0.8],
     ["/contacto", "/en/contact", 0.8],
     ["/privacidad", "/en/privacy", 0.4],
     ["/cookies", "/en/cookies", 0.4],

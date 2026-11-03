@@ -1,17 +1,17 @@
 import ContactForm from "@/components/ContactForm";
-import { getCommercialCopy } from "@/lib/commercial-content";
+import { getPublicCopy } from "@/lib/public-content";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata({
   locale: "en",
-  title: "Commercial contact | Naralimon",
-  description: "Contact Naralimon about commercial representation, food brokerage or a professional sourcing requirement.",
+  title: "Contact | Naralimon",
+  description: "Contact Naralimon to explore B2B commercial brokerage, market-development and agrifood collaboration opportunities.",
   path: "/en/contact",
   alternatePath: "/contacto",
 });
 
 export default function ContactPage() {
-  const c = getCommercialCopy("en").contact;
+  const c = getPublicCopy("en").contact;
   return (
     <main className="commercial-site commercial-contact-page">
       <section className="commercial-page-hero">
@@ -25,9 +25,9 @@ export default function ContactPage() {
         <div className="shell commercial-contact-layout">
           <div className="commercial-contact-details">
             <h2>Naralimon S.C.</h2>
-            <p>Independent commercial agency · Mijas Costa, Málaga, Spain</p>
+            <p>Mijas Costa, Málaga, Spain</p>
+            <p>{c.fallback}</p>
             <a href="mailto:naralimongroup@naralimon.com">naralimongroup@naralimon.com</a>
-            <p>Use the form to tell us about the product, market or commercial requirement. We do not publish telephone or WhatsApp details that have not been verified.</p>
           </div>
           <ContactForm locale="en" />
         </div>

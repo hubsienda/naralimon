@@ -3,8 +3,8 @@ import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata({
   locale: "en",
-  title: "Naralimon | Food Brokerage & Commercial Representation",
-  description: "Independent commercial agency in Málaga for food manufacturer representation, B2B brokerage and international sourcing.",
+  title: "Naralimon | B2B Commercial Brokerage & Market Development",
+  description: "Independent B2B commercial brokerage and market-development agency, drawing on more than 30 years of professional experience in international agrifood trade.",
   path: "/en",
   alternatePath: "/",
 });

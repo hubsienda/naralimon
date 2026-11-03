@@ -1,17 +1,17 @@
 import ContactForm from "@/components/ContactForm";
-import { getCommercialCopy } from "@/lib/commercial-content";
+import { getPublicCopy } from "@/lib/public-content";
 import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata({
   locale: "es",
-  title: "Contacto comercial | Naralimon",
-  description: "Contacta con Naralimon para representación comercial, intermediación alimentaria o una necesidad de aprovisionamiento profesional.",
+  title: "Contacto | Naralimon",
+  description: "Contacte con Naralimon para explorar oportunidades de intermediación comercial B2B, desarrollo de mercados y colaboración agroalimentaria.",
   path: "/contacto",
   alternatePath: "/en/contact",
 });
 
 export default function ContactPage() {
-  const c = getCommercialCopy("es").contact;
+  const c = getPublicCopy("es").contact;
   return (
     <main className="commercial-site commercial-contact-page">
       <section className="commercial-page-hero">
@@ -25,9 +25,9 @@ export default function ContactPage() {
         <div className="shell commercial-contact-layout">
           <div className="commercial-contact-details">
             <h2>Naralimon S.C.</h2>
-            <p>Agencia comercial independiente · Mijas Costa, Málaga, España</p>
+            <p>Mijas Costa, Málaga, España</p>
+            <p>{c.fallback}</p>
             <a href="mailto:naralimongroup@naralimon.com">naralimongroup@naralimon.com</a>
-            <p>Utiliza el formulario para indicarnos el producto, mercado o necesidad comercial. No publicamos números de teléfono o WhatsApp que no hayan sido verificados.</p>
           </div>
           <ContactForm locale="es" />
         </div>
