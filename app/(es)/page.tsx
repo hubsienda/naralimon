@@ -3,8 +3,8 @@ import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata({
   locale: "es",
-  title: "Naralimon | Intermediación alimentaria y representación comercial",
-  description: "Agencia comercial independiente en Málaga para representación de fabricantes, intermediación alimentaria B2B y aprovisionamiento internacional.",
+  title: "Naralimon | Intermediación Comercial B2B y Desarrollo de Mercados",
+  description: "Agencia independiente de intermediación comercial B2B y desarrollo de mercados, con más de 30 años de experiencia profesional en comercio internacional agroalimentario.",
   path: "/",
   alternatePath: "/en",
 });
