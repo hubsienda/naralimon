@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Naralimon — Food Brokerage & Commercial Representation";
+export const alt = "Naralimon — B2B Commercial Brokerage & Market Development";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -23,8 +23,8 @@ export default function OpenGraphImage() {
         <span style={{ color: "#ffa800" }}>nara</span><span style={{ color: "#6fae00" }}>limon</span>
       </div>
       <div style={{ display: "flex", flexDirection: "column", gap: 20, maxWidth: 980 }}>
-        <div style={{ fontSize: 68, lineHeight: 1.04, fontWeight: 850 }}>Intermediación alimentaria y representación comercial</div>
-        <div style={{ fontSize: 30, lineHeight: 1.25, fontWeight: 600 }}>Food Brokerage & Commercial Representation</div>
+        <div style={{ fontSize: 64, lineHeight: 1.04, fontWeight: 850 }}>Intermediación Comercial B2B y Desarrollo de Mercados</div>
+        <div style={{ fontSize: 30, lineHeight: 1.25, fontWeight: 600 }}>B2B Commercial Brokerage & Market Development</div>
       </div>
       <div style={{ display: "flex", justifyContent: "space-between", fontSize: 24, fontWeight: 650 }}>
         <span>Mijas Costa · Málaga · España</span>
