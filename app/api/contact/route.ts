@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { CONTACT_RECIPIENT, createMailTransport } from "@/lib/server/mail";
+import { CONTACT_RECIPIENT, createMailTransport, mailErrorDetails } from "@/lib/server/mail";
 
 export const runtime = "nodejs";
 
@@ -124,7 +124,7 @@ export async function POST(request: NextRequest) {
     });
     return NextResponse.json({ ok: true });
   } catch (error) {
-    console.error("Naralimon commercial enquiry email failed", error);
+    console.error("Naralimon commercial enquiry email failed", mailErrorDetails(error));
     return NextResponse.json({ ok: false, error: "send_failed" }, { status: 500 });
   }
 }
