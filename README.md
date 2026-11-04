@@ -59,18 +59,22 @@ The visible company field is `companyName`. The hidden anti-spam honeypot is `we
 
 The visitor's email is used as `Reply-To`; the authenticated Naralimon mailbox remains the sender. A success response is returned only after `transporter.sendMail()` resolves successfully. Delivery failures return an error.
 
-Server-only deployment variables:
+Server-only deployment variables for Google Workspace SMTP:
 
 ```text
-SMTP_USER=
-SMTP_PASS=
+SMTP_USER=real-user-mailbox@naralimon.com
+SMTP_PASS=16-character Google App Password
 SMTP_HOST=smtp.gmail.com
-SMTP_PORT=465
-SMTP_SECURE=true
-SMTP_FROM=
+SMTP_PORT=587
+SMTP_SECURE=false
+SMTP_FROM=real-user-mailbox@naralimon.com
 ```
 
-`SMTP_HOST`, `SMTP_PORT`, `SMTP_SECURE` and `SMTP_FROM` have defaults; `SMTP_USER` and `SMTP_PASS` are required at runtime.
+`naralimongroup@naralimon.com` is the delivery recipient and may remain a Google Group. It must not be used as `SMTP_USER` because a group cannot authenticate to SMTP.
+
+Use a real licensed Google Workspace user mailbox for `SMTP_USER` and `SMTP_FROM`. For Google Workspace, the password should be an App Password created for that user account with 2-Step Verification enabled. The application uses STARTTLS on port 587 by default. No external transactional-email provider is required.
+
+`SMTP_USER` and `SMTP_PASS` are required at runtime. `SMTP_HOST`, `SMTP_PORT`, `SMTP_SECURE` and `SMTP_FROM` remain configurable.
 
 ## Validation
 
