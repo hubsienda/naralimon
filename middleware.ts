@@ -16,11 +16,13 @@ const INACTIVE_PUBLIC_PREFIXES = [
   "/aprovisionamiento",
   "/historias",
   "/klans",
+  "/naralimon",
   "/en/sales-representation",
   "/en/food-brokerage",
   "/en/sourcing",
   "/en/stories",
   "/en/klans",
+  "/en/naralimon",
 ] as const;
 
 function isInactivePath(pathname: string): boolean {
@@ -50,10 +52,12 @@ export const config = {
     "/aprovisionamiento/:path*",
     "/historias/:path*",
     "/klans/:path*",
+    "/naralimon/:path*",
     "/en/sales-representation/:path*",
     "/en/food-brokerage/:path*",
     "/en/sourcing/:path*",
     "/en/stories/:path*",
     "/en/klans/:path*",
+    "/en/naralimon/:path*",
   ],
 };

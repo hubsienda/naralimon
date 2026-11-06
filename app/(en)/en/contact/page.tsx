@@ -5,7 +5,7 @@ import { pageMetadata } from "@/lib/metadata";
 export const metadata = pageMetadata({
   locale: "en",
   title: "Contact | Naralimon",
-  description: "Contact Naralimon to explore B2B commercial brokerage, market-development and agrifood collaboration opportunities.",
+  description: "Contact Naralimon about product commercialisation, commercial representation, market development, sourcing or B2B cooperation.",
   path: "/en/contact",
   alternatePath: "/contacto",
 });

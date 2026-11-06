@@ -5,7 +5,7 @@ import { pageMetadata } from "@/lib/metadata";
 export const metadata = pageMetadata({
   locale: "es",
   title: "Contacto | Naralimon",
-  description: "Contacte con Naralimon para explorar oportunidades de intermediación comercial B2B, desarrollo de mercados y colaboración agroalimentaria.",
+  description: "Contacte con Naralimon para comercialización de productos, representación comercial, desarrollo de mercados, sourcing o colaboración B2B.",
   path: "/contacto",
   alternatePath: "/en/contact",
 });
