@@ -1020,3 +1020,21 @@ h1, h2, h3 {
     opacity: .35;
   }
 }
+
+/* Keep the consent banner within the visible viewport on every screen.
+   A narrow/mobile banner may be taller than the available lower viewport;
+   show it near the top and allow the banner itself to scroll if necessary. */
+.consent-banner {
+  z-index: 95; /* below the preferences dialog (110), above page content */
+  bottom: max(1.5rem, env(safe-area-inset-bottom));
+  max-height: calc(100dvh - 3rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+@media (max-width: 820px) {
+  .consent-banner {
+    top: max(1rem, env(safe-area-inset-top));
+    bottom: auto;
+    max-height: calc(100dvh - 2rem - env(safe-area-inset-top));
+  }
+}
