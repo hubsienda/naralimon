@@ -3,8 +3,8 @@ import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata({
   locale: "es",
-  title: "Naralimon | Intermediación Comercial B2B y Desarrollo de Mercados",
-  description: "Agencia independiente de intermediación comercial B2B y desarrollo de mercados, con más de 30 años de experiencia profesional en comercio internacional agroalimentario.",
+  title: "Naralimon | Brokerage Comercial y Desarrollo de Mercados",
+  description: "Agencia independiente de brokerage comercial, comercialización de productos y desarrollo de mercados para fabricantes, proveedores, distribuidores y compradores profesionales.",
   path: "/",
   alternatePath: "/en",
 });

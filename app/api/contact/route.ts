@@ -6,7 +6,7 @@ export const runtime = "nodejs";
 const WINDOW_MS = 10 * 60 * 1000;
 const MAX_REQUESTS = 5;
 const attempts = new Map<string, number[]>();
-const enquiryTypes = new Set(["manufacturer", "buyer", "other"]);
+const enquiryTypes = new Set(["manufacturer", "buyer", "partnership", "other"]);
 
 function getClientIp(request: NextRequest): string {
   return request.headers.get("x-forwarded-for")?.split(",")[0]?.trim()
@@ -46,8 +46,18 @@ function escapeHtml(value: string): string {
 
 function enquiryLabel(value: string, locale: "es" | "en"): string {
   const labels = locale === "es"
-    ? { manufacturer: "Fabricante / productor", buyer: "Comprador profesional", other: "Otra consulta comercial" }
-    : { manufacturer: "Manufacturer / producer", buyer: "Professional buyer", other: "Other commercial enquiry" };
+    ? {
+        manufacturer: "Fabricante o proveedor",
+        buyer: "Comprador o distribuidor",
+        partnership: "Colaboración comercial",
+        other: "Otra consulta",
+      }
+    : {
+        manufacturer: "Manufacturer or supplier",
+        buyer: "Buyer or distributor",
+        partnership: "Commercial partnership",
+        other: "Other enquiry",
+      };
   return labels[value as keyof typeof labels] ?? value;
 }
 
@@ -64,7 +74,6 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ ok: false, error: "invalid_request" }, { status: 400 });
   }
 
-  // Honeypot: bots commonly fill fields hidden from human visitors.
   if (clean(body.website, 200)) {
     return NextResponse.json({ ok: true });
   }

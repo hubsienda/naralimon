@@ -12,11 +12,12 @@ export default function Hero({ locale }: { locale: Locale }) {
       <div className="shell commercial-hero-simple-inner">
         <p className="commercial-kicker">{c.kicker}</p>
         <h1>{c.title}</h1>
+        <p className="commercial-hero-lead">{c.lead}</p>
         <p className="commercial-hero-body">{c.body}</p>
         <p className="commercial-hero-proof">{c.proof}</p>
         <div className="commercial-actions">
-          <Link className="button button-primary" href={aboutHref}>{c.about}</Link>
-          <Link className="button button-secondary" href={contactHref}>{c.contact}</Link>
+          <Link className="button button-primary" href={contactHref}>{c.primary}</Link>
+          <Link className="button button-secondary" href={aboutHref}>{c.secondary}</Link>
         </div>
       </div>
     </section>

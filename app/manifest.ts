@@ -4,7 +4,7 @@ export default function manifest(): MetadataRoute.Manifest {
   return {
     name: "Naralimon",
     short_name: "Naralimon",
-    description: "Intermediación comercial B2B y desarrollo de mercados.",
+    description: "Brokerage comercial, comercialización de productos y desarrollo de mercados.",
     start_url: "/",
     display: "standalone",
     background_color: "#f7f7f2",

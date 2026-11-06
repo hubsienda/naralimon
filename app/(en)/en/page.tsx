@@ -3,8 +3,8 @@ import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata({
   locale: "en",
-  title: "Naralimon | B2B Commercial Brokerage & Market Development",
-  description: "Independent B2B commercial brokerage and market-development agency, drawing on more than 30 years of professional experience in international agrifood trade.",
+  title: "Naralimon | Commercial Brokerage & Market Development",
+  description: "Independent commercial brokerage agency focused on product commercialisation, market development and B2B opportunities for manufacturers, suppliers, distributors and professional buyers.",
   path: "/en",
   alternatePath: "/",
 });

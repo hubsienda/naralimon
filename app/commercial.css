@@ -472,3 +472,37 @@ h1, h2, h3 {
 .commercial-simple-copy > p:not(.commercial-kicker) + p {
   margin-top: 1rem;
 }
+
+
+/* November 2026 corporate brokerage repositioning */
+.commercial-experience-grid {
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(320px, 1.1fr);
+  gap: clamp(3rem, 8vw, 8rem);
+  align-items: start;
+}
+.commercial-experience-copy {
+  max-width: 760px;
+  padding-top: .3rem;
+  border-top: 5px solid var(--orange);
+}
+.commercial-experience-copy > p {
+  color: #555951;
+  font-size: 1.06rem;
+  line-height: 1.75;
+}
+.commercial-experience-copy > p + p {
+  margin-top: 1rem;
+}
+.commercial-experience-highlight {
+  margin-top: 1.6rem !important;
+  padding-top: 1.35rem;
+  border-top: 1px solid #bfc2b8;
+  color: #252525 !important;
+  font-size: clamp(1.15rem, 2vw, 1.4rem) !important;
+  font-weight: 850;
+  line-height: 1.45 !important;
+}
+@media (max-width: 820px) {
+  .commercial-experience-grid { grid-template-columns: 1fr; }
+}

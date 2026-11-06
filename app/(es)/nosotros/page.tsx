@@ -4,8 +4,8 @@ import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata({
   locale: "es",
-  title: "Nosotros | Naralimon — Intermediación Comercial B2B",
-  description: "Naralimon S.C. combina más de 30 años de experiencia profesional en comercio internacional agroalimentario con ingeniería de gestión, marketing B2B e inteligencia de negocio.",
+  title: "Nosotros | Naralimon — Brokerage Comercial",
+  description: "Naralimon combina más de 30 años de experiencia profesional en comercio internacional y trading con ingeniería de negocio, marketing e inteligencia comercial.",
   path: "/nosotros",
   alternatePath: "/en/about",
 });

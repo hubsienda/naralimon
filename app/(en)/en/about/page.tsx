@@ -4,8 +4,8 @@ import { pageMetadata } from "@/lib/metadata";
 
 export const metadata = pageMetadata({
   locale: "en",
-  title: "About Naralimon | B2B Commercial Brokerage",
-  description: "Naralimon combines more than 30 years of professional experience in international agrifood trade with management engineering, B2B marketing and business intelligence.",
+  title: "About Naralimon | Commercial Brokerage",
+  description: "Naralimon combines more than 30 years of professional experience in international commerce and trading with business engineering, marketing and commercial intelligence.",
   path: "/en/about",
   alternatePath: "/nosotros",
 });
