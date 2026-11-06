@@ -2,7 +2,8 @@ import "server-only";
 
 import nodemailer from "nodemailer";
 
-export const CONTACT_RECIPIENT = "naralimongroup@naralimon.com";
+// Deliver directly to both operators, avoiding Google Groups' sender-copy suppression.
+export const CONTACT_RECIPIENTS = ["hub@naralimon.com", "ale@naralimon.com"] as const;
 
 function required(name: string): string {
   const value = process.env[name]?.trim();
