@@ -15,8 +15,14 @@ export function createMailTransport() {
   // naralimongroup@naralimon.com address is a Google Group recipient, not
   // an SMTP account, and therefore must not be used as SMTP_USER.
   const user = required("SMTP_USER");
-  const pass = required("SMTP_PASS");
   const host = process.env.SMTP_HOST?.trim() || "smtp.gmail.com";
+  const rawPass = required("SMTP_PASS");
+  // Google displays app passwords in space-separated groups. Those spaces are
+  // for readability only; Gmail SMTP expects the continuous 16 characters.
+  // Do not change passwords for non-Google SMTP hosts, where spaces may matter.
+  const pass = host.toLowerCase() === "smtp.gmail.com"
+    ? rawPass.replace(/\s+/g, "")
+    : rawPass;
   const port = Number(process.env.SMTP_PORT || 587);
 
   if (!Number.isInteger(port) || port < 1 || port > 65535) {
