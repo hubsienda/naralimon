@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { CONTACT_RECIPIENT, createMailTransport, mailErrorDetails } from "@/lib/server/mail";
+import { CONTACT_RECIPIENTS, createMailTransport, mailErrorDetails } from "@/lib/server/mail";
 
 export const runtime = "nodejs";
 
@@ -123,14 +123,26 @@ export async function POST(request: NextRequest) {
 
   try {
     const { transporter, from } = createMailTransport();
-    await transporter.sendMail({
+    const delivery = await transporter.sendMail({
       from: "Naralimon website <" + from + ">",
-      to: CONTACT_RECIPIENT,
+      to: [...CONTACT_RECIPIENTS],
       replyTo: email,
       subject: "Naralimon commercial enquiry — " + companyName + " — " + typeLabel,
       text,
       html,
     });
+
+    // Nodemailer can resolve when SMTP accepts only some recipients.
+    // Do not claim success unless both direct destinations were accepted.
+    const accepted = new Set(delivery.accepted.map((address) => String(address).toLowerCase()));
+    if (CONTACT_RECIPIENTS.some((address) => !accepted.has(address))) {
+      console.error("Naralimon contact email partially rejected", {
+        accepted: delivery.accepted,
+        rejected: delivery.rejected,
+      });
+      return NextResponse.json({ ok: false, error: "send_failed" }, { status: 502 });
+    }
+
     return NextResponse.json({ ok: true });
   } catch (error) {
     console.error("Naralimon commercial enquiry email failed", mailErrorDetails(error));

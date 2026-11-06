@@ -47,9 +47,12 @@ The current short public positioning is stored separately in `lib/public-content
 
 ## Contact form
 
-The business enquiry form posts to `/api/contact` and sends mail server-side to:
+The business enquiry form posts to `/api/contact` and sends mail server-side **directly to both operators**:
 
-`naralimongroup@naralimon.com`
+- `hub@naralimon.com`
+- `ale@naralimon.com`
+
+The public-facing contact address remains `naralimongroup@naralimon.com`, but form messages bypass the Google Group. This avoids Gmail suppressing the sender's own group copy for `hub@naralimon.com`.
 
 It uses the existing Nodemailer SMTP implementation and does not require a database or a third-party transactional email platform.
 
@@ -57,7 +60,7 @@ Fields include name, company, email, optional telephone, enquiry type, product/c
 
 The visible company field is `companyName`. The hidden anti-spam honeypot is `website`.
 
-The visitor's email is used as `Reply-To`; the authenticated Naralimon mailbox remains the sender. A success response is returned only after `transporter.sendMail()` resolves successfully. Delivery failures return an error.
+The visitor's email is used as `Reply-To`; the authenticated Naralimon mailbox remains the sender. A success response is returned only after SMTP acknowledges **both** direct recipients (not merely one). SMTP acceptance does not guarantee inbox placement; verify actual inbox delivery after deployment.
 
 Server-only deployment variables for Google Workspace SMTP:
 
@@ -70,7 +73,7 @@ SMTP_SECURE=false
 SMTP_FROM=real-user-mailbox@naralimon.com
 ```
 
-`naralimongroup@naralimon.com` is the delivery recipient and may remain a Google Group. It must not be used as `SMTP_USER` because a group cannot authenticate to SMTP.
+`naralimongroup@naralimon.com` remains the public contact address and may remain a Google Group, but is not the contact form's destination. It must not be used as `SMTP_USER` because a group cannot authenticate to SMTP. Keep `SMTP_USER=hub@naralimon.com` with the corresponding app password.
 
 Use a real licensed Google Workspace user mailbox for `SMTP_USER` and `SMTP_FROM`. For Google Workspace, the password should be an App Password created for that user account with 2-Step Verification enabled. The application uses STARTTLS on port 587 by default. No external transactional-email provider is required.
 
